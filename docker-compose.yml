@@ -1,0 +1,17 @@
+version: '3.0'
+services:
+  micron:
+    build: .
+    volumes:
+      - .:/go/src/app
+    ports:
+      - "8080:8080"
+  database:
+    image: mongo
+    container_name: 'micron_db'
+    restart: on-failure
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - '27017-27019:27017-27019'

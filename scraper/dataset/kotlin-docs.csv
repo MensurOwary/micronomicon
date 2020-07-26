@@ -1,0 +1,116 @@
+Kotlin for Server Side,https://kotlinlang.org/docs/reference/server-overview.html,kotlin;server;side;kotlin
+Kotlin for Android,https://kotlinlang.org/docs/reference/android-overview.html,kotlin;android;kotlin
+Kotlin for JavaScript,https://kotlinlang.org/docs/reference/js-overview.html,kotlin;javascript;kotlin
+Kotlin for Native,https://kotlinlang.org/docs/reference/native-overview.html,kotlin;native;kotlin
+Kotlin for Data Science,https://kotlinlang.org/docs/reference/data-science-overview.html,kotlin;data;science;kotlin
+Coroutines,https://kotlinlang.org/docs/reference/coroutines-overview.html,coroutines;kotlin
+Multiplatform,https://kotlinlang.org/docs/reference/multiplatform.html,multiplatform;kotlin
+What's New in 1.3,https://kotlinlang.org/docs/reference/whatsnew13.html,new;kotlin
+What's New in 1.2,https://kotlinlang.org/docs/reference/whatsnew12.html,new;kotlin
+What's New in 1.1,https://kotlinlang.org/docs/reference/whatsnew11.html,new;kotlin
+Basic Syntax,https://kotlinlang.org/docs/reference/basic-syntax.html,basic;syntax;kotlin
+Idioms,https://kotlinlang.org/docs/reference/idioms.html,idioms;kotlin
+Coding Conventions,https://kotlinlang.org/docs/reference/coding-conventions.html,coding;conventions;kotlin
+Basic Types,https://kotlinlang.org/docs/reference/basic-types.html,basic;types;kotlin
+Packages and Imports,https://kotlinlang.org/docs/reference/packages.html,packages;imports;kotlin
+Control Flow,https://kotlinlang.org/docs/reference/control-flow.html,control;flow;kotlin
+Returns and Jumps,https://kotlinlang.org/docs/reference/returns.html,returns;jumps;kotlin
+Classes and Inheritance,https://kotlinlang.org/docs/reference/classes.html,classes;inheritance;kotlin
+Properties and Fields,https://kotlinlang.org/docs/reference/properties.html,properties;fields;kotlin
+Interfaces,https://kotlinlang.org/docs/reference/interfaces.html,interfaces;kotlin
+Visibility Modifiers,https://kotlinlang.org/docs/reference/visibility-modifiers.html,visibility;modifiers;kotlin
+Extensions,https://kotlinlang.org/docs/reference/extensions.html,extensions;kotlin
+Data Classes,https://kotlinlang.org/docs/reference/data-classes.html,data;classes;kotlin
+Sealed Classes,https://kotlinlang.org/docs/reference/sealed-classes.html,sealed;classes;kotlin
+Generics,https://kotlinlang.org/docs/reference/generics.html,generics;kotlin
+Nested Classes,https://kotlinlang.org/docs/reference/nested-classes.html,nested;classes;kotlin
+Enum Classes,https://kotlinlang.org/docs/reference/enum-classes.html,enum;classes;kotlin
+Objects,https://kotlinlang.org/docs/reference/object-declarations.html,objects;kotlin
+Type Aliases,https://kotlinlang.org/docs/reference/type-aliases.html,type;aliases;kotlin
+Inline Classes,https://kotlinlang.org/docs/reference/inline-classes.html,inline;classes;kotlin
+Delegation,https://kotlinlang.org/docs/reference/delegation.html,delegation;kotlin
+Delegated Properties,https://kotlinlang.org/docs/reference/delegated-properties.html,delegated;properties;kotlin
+Functions,https://kotlinlang.org/docs/reference/functions.html,functions;kotlin
+Lambdas,https://kotlinlang.org/docs/reference/lambdas.html,lambdas;kotlin
+Inline Functions,https://kotlinlang.org/docs/reference/inline-functions.html,inline;functions;kotlin
+Collections Overview,https://kotlinlang.org/docs/reference/collections-overview.html,collections;overview;kotlin
+Constructing Collections,https://kotlinlang.org/docs/reference/constructing-collections.html,constructing;collections;kotlin
+Iterators,https://kotlinlang.org/docs/reference/iterators.html,iterators;kotlin
+Ranges and Progressions,https://kotlinlang.org/docs/reference/ranges.html,ranges;progressions;kotlin
+Sequences,https://kotlinlang.org/docs/reference/sequences.html,sequences;kotlin
+Operations Overview,https://kotlinlang.org/docs/reference/collection-operations.html,operations;overview;kotlin
+Transformations,https://kotlinlang.org/docs/reference/collection-transformations.html,transformations;kotlin
+Filtering,https://kotlinlang.org/docs/reference/collection-filtering.html,filtering;kotlin
+Plus and Minus Operators,https://kotlinlang.org/docs/reference/collection-plus-minus.html,plus;minus;operators;kotlin
+Grouping,https://kotlinlang.org/docs/reference/collection-grouping.html,grouping;kotlin
+Retrieving Collection Parts,https://kotlinlang.org/docs/reference/collection-parts.html,retrieving;collection;parts;kotlin
+Retrieving Single Elements,https://kotlinlang.org/docs/reference/collection-elements.html,retrieving;single;elements;kotlin
+Ordering,https://kotlinlang.org/docs/reference/collection-ordering.html,ordering;kotlin
+Aggregate Operations,https://kotlinlang.org/docs/reference/collection-aggregate.html,aggregate;operations;kotlin
+Collection Write Operations,https://kotlinlang.org/docs/reference/collection-write.html,collection;write;operations;kotlin
+List Specific Operations,https://kotlinlang.org/docs/reference/list-operations.html,list;specific;operations;kotlin
+Set Specific Operations,https://kotlinlang.org/docs/reference/set-operations.html,set;specific;operations;kotlin
+Map Specific Operations,https://kotlinlang.org/docs/reference/map-operations.html,map;specific;operations;kotlin
+Coroutines Guide,https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html,coroutines;guide;kotlin
+Basics,https://kotlinlang.org/docs/reference/coroutines/basics.html,basics;kotlin
+Cancellation and Timeouts,https://kotlinlang.org/docs/reference/coroutines/cancellation-and-timeouts.html,cancellation;timeouts;kotlin
+Composing Suspending Functions,https://kotlinlang.org/docs/reference/coroutines/composing-suspending-functions.html,composing;suspending;functions;kotlin
+Coroutine Context and Dispatchers,https://kotlinlang.org/docs/reference/coroutines/coroutine-context-and-dispatchers.html,coroutine;context;dispatchers;kotlin
+Asynchronous Flow,https://kotlinlang.org/docs/reference/coroutines/flow.html,asynchronous;flow;kotlin
+Channels,https://kotlinlang.org/docs/reference/coroutines/channels.html,channels;kotlin
+Exception Handling and Supervision,https://kotlinlang.org/docs/reference/coroutines/exception-handling.html,exception;handling;supervision;kotlin
+Shared Mutable State and Concurrency,https://kotlinlang.org/docs/reference/coroutines/shared-mutable-state-and-concurrency.html,shared;mutable;state;concurrency;kotlin
+Select Expression (experimental),https://kotlinlang.org/docs/reference/coroutines/select-expression.html,select;expression;kotlin
+Platform-Specific Declarations,https://kotlinlang.org/docs/reference/platform-specific-declarations.html,platform-specific;declarations;kotlin
+Building with Gradle,https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html,building;gradle;kotlin
+Multiplatform Gradle DSL Reference,https://kotlinlang.org/docs/reference/mpp-dsl-reference.html,multiplatform;gradle;dsl;reference;kotlin
+Destructuring Declarations,https://kotlinlang.org/docs/reference/multi-declarations.html,destructuring;declarations;kotlin
+Type Checks and Casts,https://kotlinlang.org/docs/reference/typecasts.html,type;checks;casts;kotlin
+This expressions,https://kotlinlang.org/docs/reference/this-expressions.html,this;expressions;kotlin
+Equality,https://kotlinlang.org/docs/reference/equality.html,equality;kotlin
+Operator overloading,https://kotlinlang.org/docs/reference/operator-overloading.html,operator;overloading;kotlin
+Null Safety,https://kotlinlang.org/docs/reference/null-safety.html,null;safety;kotlin
+Exceptions,https://kotlinlang.org/docs/reference/exceptions.html,exceptions;kotlin
+Annotations,https://kotlinlang.org/docs/reference/annotations.html,annotations;kotlin
+Reflection,https://kotlinlang.org/docs/reference/reflection.html,reflection;kotlin
+Scope Functions,https://kotlinlang.org/docs/reference/scope-functions.html,scope;functions;kotlin
+Type-Safe Builders,https://kotlinlang.org/docs/reference/type-safe-builders.html,type-safe;builders;kotlin
+Opt-in Requirements,https://kotlinlang.org/docs/reference/opt-in-requirements.html,opt-in;requirements;kotlin
+Standard Library,https://kotlinlang.org/api/latest/jvm/stdlib/index.html,standard;library;kotlin
+kotlin.test,https://kotlinlang.org/api/latest/kotlin.test/index.html,kotlin
+Keywords and operators,https://kotlinlang.org/docs/reference/keyword-reference.html,keywords;operators;kotlin
+Grammar,https://kotlinlang.org/docs/reference/grammar.html,grammar;kotlin
+Coding style conventions,https://kotlinlang.org/docs/reference/code-style-migration-guide.html,coding;style;conventions;kotlin
+Calling Java from Kotlin,https://kotlinlang.org/docs/reference/java-interop.html,calling;java;kotlin;kotlin
+Calling Kotlin from Java,https://kotlinlang.org/docs/reference/java-to-kotlin-interop.html,calling;kotlin;java;kotlin
+Setting Up a Project,https://kotlinlang.org/docs/reference/js-project-setup.html,setting;up;project;kotlin
+Dynamic Type,https://kotlinlang.org/docs/reference/dynamic-type.html,dynamic;type;kotlin
+Calling JavaScript from Kotlin,https://kotlinlang.org/docs/reference/js-interop.html,calling;javascript;kotlin;kotlin
+Calling Kotlin from JavaScript,https://kotlinlang.org/docs/reference/js-to-kotlin-interop.html,calling;kotlin;javascript;kotlin
+JavaScript Modules,https://kotlinlang.org/docs/reference/js-modules.html,javascript;modules;kotlin
+JavaScript Reflection,https://kotlinlang.org/docs/reference/js-reflection.html,javascript;reflection;kotlin
+JavaScript DCE,https://kotlinlang.org/docs/reference/javascript-dce.html,javascript;dce;kotlin
+Concurrency,https://kotlinlang.org/docs/reference/native/concurrency.html,concurrency;kotlin
+Immutability,https://kotlinlang.org/docs/reference/native/immutability.html,immutability;kotlin
+Kotlin Libraries,https://kotlinlang.org/docs/reference/native/libraries.html,kotlin;libraries;kotlin
+Platform Libraries,https://kotlinlang.org/docs/reference/native/platform_libs.html,platform;libraries;kotlin
+C Interop,https://kotlinlang.org/docs/reference/native/c_interop.html,c;interop;kotlin
+Objective-C and Swift Interop,https://kotlinlang.org/docs/reference/native/objc_interop.html,objective-c;swift;interop;kotlin
+Symbolicating iOS crash reports,https://kotlinlang.org/docs/reference/native/ios_symbolication.html,symbolicating;ios;crash;reports;kotlin
+CocoaPods Integration,https://kotlinlang.org/docs/reference/native/cocoapods.html,cocoapods;integration;kotlin
+Gradle Plugin,https://kotlinlang.org/docs/reference/native/gradle_plugin.html,gradle;plugin;kotlin
+Debugging,https://kotlinlang.org/docs/reference/native/debugging.html,debugging;kotlin
+FAQ,https://kotlinlang.org/docs/reference/native/faq.html,faq;kotlin
+Gradle,https://kotlinlang.org/docs/reference/using-gradle.html,gradle;kotlin
+Maven,https://kotlinlang.org/docs/reference/using-maven.html,maven;kotlin
+Ant,https://kotlinlang.org/docs/reference/using-ant.html,ant;kotlin
+Compiler options,https://kotlinlang.org/docs/reference/compiler-reference.html,compiler;options;kotlin
+Compiler plugins,https://kotlinlang.org/docs/reference/compiler-plugins.html,compiler;plugins;kotlin
+Kapt,https://kotlinlang.org/docs/reference/kapt.html,kapt;kotlin
+Dokka,https://kotlinlang.org/docs/reference/kotlin-doc.html,dokka;kotlin
+OSGi,https://kotlinlang.org/docs/reference/kotlin-osgi.html,osgi;kotlin
+Kotlin Evolution,https://kotlinlang.org/docs/reference/evolution/kotlin-evolution.html,kotlin;evolution;kotlin
+Stability of different components,https://kotlinlang.org/docs/reference/evolution/components-stability.html,stability;different;components;kotlin
+Compatibility Guide for Kotlin 1.3,https://kotlinlang.org/docs/reference/compatibility-guide-13.html,compatibility;guide;kotlin;kotlin
+FAQ,https://kotlinlang.org/docs/reference/faq.html,faq;kotlin
+Comparison to Java,https://kotlinlang.org/docs/reference/comparison-to-java.html,comparison;java;kotlin

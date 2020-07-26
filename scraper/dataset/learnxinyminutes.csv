@@ -1,0 +1,148 @@
+Asymptotic Notation,https://learnxinyminutes.com/docs/asymptotic-notation/,asymptotic;notation
+Dynamic Programming,https://learnxinyminutes.com/docs/dynamic-programming/,dynamic;programming
+Lambda Calculus,https://learnxinyminutes.com/docs/lambda-calculus/,lambda;calculus
+Set theory,https://learnxinyminutes.com/docs/set-theory/,set;theory
+asciidoc,https://learnxinyminutes.com/docs/asciidoc/,asciidoc
+bc,https://learnxinyminutes.com/docs/bc/,bc
+bf,https://learnxinyminutes.com/docs/bf/,bf
+c,https://learnxinyminutes.com/docs/c/,c
+c#,https://learnxinyminutes.com/docs/csharp/,
+c++,https://learnxinyminutes.com/docs/c++/,c++
+chapel,https://learnxinyminutes.com/docs/chapel/,chapel
+CHICKEN,https://learnxinyminutes.com/docs/CHICKEN/,chicken
+clojure,https://learnxinyminutes.com/docs/clojure/,clojure
+clojure macros,https://learnxinyminutes.com/docs/clojure-macros/,clojure;macros
+COBOL,https://learnxinyminutes.com/docs/cobol/,cobol
+coffeescript,https://learnxinyminutes.com/docs/coffeescript/,coffeescript
+coldfusion,https://learnxinyminutes.com/docs/coldfusion/,coldfusion
+Common Lisp,https://learnxinyminutes.com/docs/common-lisp/,common;lisp
+Coq,https://learnxinyminutes.com/docs/coq/,coq
+crystal,https://learnxinyminutes.com/docs/crystal/,crystal
+css,https://learnxinyminutes.com/docs/css/,css
+cypher,https://learnxinyminutes.com/docs/cypher/,cypher
+D,https://learnxinyminutes.com/docs/d/,d
+dart,https://learnxinyminutes.com/docs/dart/,dart
+Dhall,https://learnxinyminutes.com/docs/dhall/,dhall
+docker,https://learnxinyminutes.com/docs/docker/,docker
+edn,https://learnxinyminutes.com/docs/edn/,edn
+elisp,https://learnxinyminutes.com/docs/elisp/,elisp
+elixir,https://learnxinyminutes.com/docs/elixir/,elixir
+Elm,https://learnxinyminutes.com/docs/elm/,elm
+erlang,https://learnxinyminutes.com/docs/erlang/,erlang
+F#,https://learnxinyminutes.com/docs/fsharp/,
+factor,https://learnxinyminutes.com/docs/factor/,factor
+forth,https://learnxinyminutes.com/docs/forth/,forth
+Fortran,https://learnxinyminutes.com/docs/fortran95/,fortran
+Go,https://learnxinyminutes.com/docs/go/,go
+Groovy,https://learnxinyminutes.com/docs/groovy/,groovy
+Hack,https://learnxinyminutes.com/docs/hack/,hack
+haml,https://learnxinyminutes.com/docs/haml/,haml
+Haskell,https://learnxinyminutes.com/docs/haskell/,haskell
+haxe,https://learnxinyminutes.com/docs/haxe/,haxe
+hdl,https://learnxinyminutes.com/docs/hdl/,hdl
+HQ9+,https://learnxinyminutes.com/docs/hq9+/,
+html,https://learnxinyminutes.com/docs/html/,html
+hy,https://learnxinyminutes.com/docs/hy/,hy
+Inform7,https://learnxinyminutes.com/docs/inform7/,
+java,https://learnxinyminutes.com/docs/java/,java
+javascript,https://learnxinyminutes.com/docs/javascript/,javascript
+json,https://learnxinyminutes.com/docs/json/,json
+jsonnet,https://learnxinyminutes.com/docs/jsonnet/,jsonnet
+Julia,https://learnxinyminutes.com/docs/julia/,julia
+kdb+,https://learnxinyminutes.com/docs/kdb+/,kdb+
+kotlin,https://learnxinyminutes.com/docs/kotlin/,kotlin
+latex,https://learnxinyminutes.com/docs/latex/,latex
+LDPL,https://learnxinyminutes.com/docs/ldpl/,ldpl
+less,https://learnxinyminutes.com/docs/less/,
+Lisp Flavoured Erlang(LFE),https://learnxinyminutes.com/docs/lfe/,lisp;flavoured
+LiveScript,https://learnxinyminutes.com/docs/livescript/,livescript
+Logtalk,https://learnxinyminutes.com/docs/logtalk/,logtalk
+LOLCODE,https://learnxinyminutes.com/docs/LOLCODE/,lolcode
+Lua,https://learnxinyminutes.com/docs/lua/,lua
+M (MUMPS),https://learnxinyminutes.com/docs/m/,m
+markdown,https://learnxinyminutes.com/docs/markdown/,markdown
+Matlab,https://learnxinyminutes.com/docs/matlab/,matlab
+mercury,https://learnxinyminutes.com/docs/mercury/,mercury
+MIPS Assembly,https://learnxinyminutes.com/docs/mips/,mips;assembly
+montilang,https://learnxinyminutes.com/docs/montilang/,montilang
+moonscript,https://learnxinyminutes.com/docs/moonscript/,moonscript
+neat,https://learnxinyminutes.com/docs/neat/,neat
+Nim,https://learnxinyminutes.com/docs/nim/,nim
+nix,https://learnxinyminutes.com/docs/nix/,nix
+Objective-C,https://learnxinyminutes.com/docs/objective-c/,objective-c
+OCaml,https://learnxinyminutes.com/docs/ocaml/,ocaml
+Paren,https://learnxinyminutes.com/docs/paren/,paren
+Pascal,https://learnxinyminutes.com/docs/pascal/,pascal
+Pascal,https://learnxinyminutes.com/docs/ru-ru/pascal-ru/,pascal
+PCRE,https://learnxinyminutes.com/docs/pcre/,pcre
+perl,https://learnxinyminutes.com/docs/perl/,perl
+PHP,https://learnxinyminutes.com/docs/php/,php
+Pod,https://learnxinyminutes.com/docs/raku-pod/,pod
+pogoscript,https://learnxinyminutes.com/docs/pogo/,pogoscript
+processing,https://learnxinyminutes.com/docs/processing/,processing
+prolog,https://learnxinyminutes.com/docs/prolog/,prolog
+protocol-buffers,https://learnxinyminutes.com/docs/protocol-buffer-3/,protocol-buffers
+Pug,https://learnxinyminutes.com/docs/pug/,pug
+purescript,https://learnxinyminutes.com/docs/purescript/,purescript
+Python,https://learnxinyminutes.com/docs/python/,python
+Python 2 (legacy),https://learnxinyminutes.com/docs/pythonlegacy/,python
+R,https://learnxinyminutes.com/docs/r/,r
+racket,https://learnxinyminutes.com/docs/racket/,racket
+Raku,https://learnxinyminutes.com/docs/raku/,raku
+reason,https://learnxinyminutes.com/docs/reason/,reason
+Red,https://learnxinyminutes.com/docs/red/,red
+restructured text (RST),https://learnxinyminutes.com/docs/rst/,restructured;text
+ruby,https://learnxinyminutes.com/docs/ruby/,ruby
+Rust,https://learnxinyminutes.com/docs/rust/,rust
+sass,https://learnxinyminutes.com/docs/sass/,sass
+Scala,https://learnxinyminutes.com/docs/scala/,scala
+self,https://learnxinyminutes.com/docs/self/,self
+SmallBASIC,https://learnxinyminutes.com/docs/smallbasic/,smallbasic
+Smalltalk,https://learnxinyminutes.com/docs/smalltalk/,smalltalk
+Solidity,https://learnxinyminutes.com/docs/solidity/,solidity
+SQL,https://learnxinyminutes.com/docs/sql/,sql
+Standard ML,https://learnxinyminutes.com/docs/standard-ml/,standard;ml
+stylus,https://learnxinyminutes.com/docs/stylus/,stylus
+swift,https://learnxinyminutes.com/docs/swift/,swift
+Tcl,https://learnxinyminutes.com/docs/tcl/,tcl
+textile,https://learnxinyminutes.com/docs/textile/,textile
+toml,https://learnxinyminutes.com/docs/toml/,toml
+TypeScript,https://learnxinyminutes.com/docs/typescript/,typescript
+vala,https://learnxinyminutes.com/docs/vala/,vala
+Vimscript,https://learnxinyminutes.com/docs/vimscript/,vimscript
+Visual Basic,https://learnxinyminutes.com/docs/visualbasic/,visual;basic
+Vyper,https://learnxinyminutes.com/docs/vyper/,vyper
+WebAssembly,https://learnxinyminutes.com/docs/wasm/,webassembly
+whip,https://learnxinyminutes.com/docs/whip/,whip
+wolfram,https://learnxinyminutes.com/docs/wolfram/,wolfram
+xml,https://learnxinyminutes.com/docs/xml/,xml
+yaml,https://learnxinyminutes.com/docs/yaml/,yaml
+amd,https://learnxinyminutes.com/docs/amd/,amd
+AngularJS,https://learnxinyminutes.com/docs/angularjs/,angularjs
+ansible,https://learnxinyminutes.com/docs/ansible/,ansible
+awk,https://learnxinyminutes.com/docs/awk/,awk
+bash,https://learnxinyminutes.com/docs/bash/,bash
+cmake,https://learnxinyminutes.com/docs/cmake/,cmake
+compojure,https://learnxinyminutes.com/docs/compojure/,compojure
+composer,https://learnxinyminutes.com/docs/php-composer/,composer
+DirectX 9,https://learnxinyminutes.com/docs/directx9/,directx
+emacs,https://learnxinyminutes.com/docs/emacs/,emacs
+git,https://learnxinyminutes.com/docs/git/,git
+jquery,https://learnxinyminutes.com/docs/jquery/,jquery
+linker,https://learnxinyminutes.com/docs/linker/,linker
+make,https://learnxinyminutes.com/docs/make/,make
+Mercurial,https://learnxinyminutes.com/docs/mercurial/,mercurial
+messagepack,https://learnxinyminutes.com/docs/messagepack/,messagepack
+OpenCV,https://learnxinyminutes.com/docs/opencv/,opencv
+OpenGL,https://learnxinyminutes.com/docs/opengl/,opengl
+p5,https://learnxinyminutes.com/docs/p5/,
+powershell,https://learnxinyminutes.com/docs/powershell/,powershell
+PyQT,https://learnxinyminutes.com/docs/pyqt/,pyqt
+Qt Framework,https://learnxinyminutes.com/docs/qt/,qt;framework
+ruby ecosystem,https://learnxinyminutes.com/docs/ruby-ecosystem/,ruby;ecosystem
+ShutIt,https://learnxinyminutes.com/docs/shutit/,shutit
+Statistical Computing with Python,https://learnxinyminutes.com/docs/pythonstatcomp/,statistical;computing;python
+tcsh,https://learnxinyminutes.com/docs/tcsh/,tcsh
+tmux,https://learnxinyminutes.com/docs/tmux/,tmux
+vim,https://learnxinyminutes.com/docs/vim/,vim
+zfs,https://learnxinyminutes.com/docs/zfs/,zfs

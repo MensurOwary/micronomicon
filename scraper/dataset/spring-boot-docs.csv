@@ -1,0 +1,26 @@
+Introducing Spring Boot,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-introducing-spring-boot,introducing;spring;boot;spring-boot;spring
+System Requirements,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-system-requirements,system;requirements;spring-boot;spring
+Servlet Containers,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-system-requirements-servlet-containers,servlet;containers;spring-boot;spring
+Installing Spring Boot,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-installing-spring-boot,installing;spring;boot;spring-boot;spring
+Installation Instructions for the Java Developer,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-installation-instructions-for-java,installation;instructions;java;developer;spring-boot;spring
+Maven Installation,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-maven-installation,maven;installation;spring-boot;spring
+Gradle Installation,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-gradle-installation,gradle;installation;spring-boot;spring
+Installing the Spring Boot CLI,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-installing-the-cli,installing;spring;boot;cli;spring-boot;spring
+Manual Installation,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-manual-cli-installation,manual;installation;spring-boot;spring
+Installation with SDKMAN!,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-sdkman-cli-installation,installation;spring-boot;spring
+OSX Homebrew Installation,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-homebrew-cli-installation,osx;homebrew;installation;spring-boot;spring
+MacPorts Installation,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-macports-cli-installation,macports;installation;spring-boot;spring
+Command-line Completion,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-cli-command-line-completion,command-line;completion;spring-boot;spring
+Windows Scoop Installation,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-scoop-cli-installation,windows;scoop;installation;spring-boot;spring
+Quick-start Spring CLI Example,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-cli-example,quick-start;spring;cli;example;spring-boot;spring
+Upgrading from an Earlier Version of Spring Boot,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-upgrading-from-an-earlier-version,upgrading;earlier;version;spring;boot;spring-boot;spring
+Developing Your First Spring Boot Application,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application,developing;your;first;spring;boot;application;spring-boot;spring
+Creating the POM,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-pom,creating;pom;spring-boot;spring
+Adding Classpath Dependencies,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-dependencies,adding;classpath;dependencies;spring-boot;spring
+Writing the Code,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-code,writing;code;spring-boot;spring
+The @RestController and @RequestMapping Annotations,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-annotations,the;annotations;spring-boot;spring
+The @EnableAutoConfiguration Annotation,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-auto-configuration,the;annotation;spring-boot;spring
+The “main” Method,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-main-method,the;“main”;method;spring-boot;spring
+Running the Example,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-run,running;example;spring-boot;spring
+Creating an Executable Jar,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-executable-jar,creating;executable;jar;spring-boot;spring
+What to Read Next,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-whats-next,what;read;next;spring-boot;spring

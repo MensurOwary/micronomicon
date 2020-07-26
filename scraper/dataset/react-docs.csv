@@ -1,0 +1,77 @@
+Getting Started,https://reactjs.org/docs/getting-started.html,getting;started;react
+Add React to a Website,https://reactjs.org/docs/add-react-to-a-website.html,add;react;website;react
+Create a New React App,https://reactjs.org/docs/create-a-new-react-app.html,create;new;react;app;react
+CDN Links,https://reactjs.org/docs/cdn-links.html,cdn;links;react
+Release Channels,https://reactjs.org/docs/release-channels.html,release;channels;react
+Hello World,https://reactjs.org/docs/hello-world.html,hello;world;react
+Introducing JSX,https://reactjs.org/docs/introducing-jsx.html,introducing;jsx;react
+Rendering Elements,https://reactjs.org/docs/rendering-elements.html,rendering;elements;react
+Components and Props,https://reactjs.org/docs/components-and-props.html,components;props;react
+State and Lifecycle,https://reactjs.org/docs/state-and-lifecycle.html,state;lifecycle;react
+Handling Events,https://reactjs.org/docs/handling-events.html,handling;events;react
+Conditional Rendering,https://reactjs.org/docs/conditional-rendering.html,conditional;rendering;react
+Lists and Keys,https://reactjs.org/docs/lists-and-keys.html,lists;keys;react
+Forms,https://reactjs.org/docs/forms.html,forms;react
+Lifting State Up,https://reactjs.org/docs/lifting-state-up.html,lifting;state;up;react
+Composition vs Inheritance,https://reactjs.org/docs/composition-vs-inheritance.html,composition;vs;inheritance;react
+Thinking In React,https://reactjs.org/docs/thinking-in-react.html,thinking;in;react;react
+Accessibility,https://reactjs.org/docs/accessibility.html,accessibility;react
+Code-Splitting,https://reactjs.org/docs/code-splitting.html,code-splitting;react
+Context,https://reactjs.org/docs/context.html,context;react
+Error Boundaries,https://reactjs.org/docs/error-boundaries.html,error;boundaries;react
+Forwarding Refs,https://reactjs.org/docs/forwarding-refs.html,forwarding;refs;react
+Fragments,https://reactjs.org/docs/fragments.html,fragments;react
+Higher-Order Components,https://reactjs.org/docs/higher-order-components.html,higher-order;components;react
+Integrating with Other Libraries,https://reactjs.org/docs/integrating-with-other-libraries.html,integrating;other;libraries;react
+JSX In Depth,https://reactjs.org/docs/jsx-in-depth.html,jsx;in;depth;react
+Optimizing Performance,https://reactjs.org/docs/optimizing-performance.html,optimizing;performance;react
+Portals,https://reactjs.org/docs/portals.html,portals;react
+Profiler,https://reactjs.org/docs/profiler.html,profiler;react
+React Without ES6,https://reactjs.org/docs/react-without-es6.html,react;without;react
+React Without JSX,https://reactjs.org/docs/react-without-jsx.html,react;without;jsx;react
+Reconciliation,https://reactjs.org/docs/reconciliation.html,reconciliation;react
+Refs and the DOM,https://reactjs.org/docs/refs-and-the-dom.html,refs;dom;react
+Render Props,https://reactjs.org/docs/render-props.html,render;props;react
+Static Type Checking,https://reactjs.org/docs/static-type-checking.html,static;type;checking;react
+Strict Mode,https://reactjs.org/docs/strict-mode.html,strict;mode;react
+Typechecking With PropTypes,https://reactjs.org/docs/typechecking-with-proptypes.html,typechecking;with;proptypes;react
+Uncontrolled Components,https://reactjs.org/docs/uncontrolled-components.html,uncontrolled;components;react
+Web Components,https://reactjs.org/docs/web-components.html,web;components;react
+React,https://reactjs.org/docs/react-api.html,react;react
+React.Component,https://reactjs.org/docs/react-component.html,react
+ReactDOM,https://reactjs.org/docs/react-dom.html,reactdom;react
+ReactDOMServer,https://reactjs.org/docs/react-dom-server.html,reactdomserver;react
+DOM Elements,https://reactjs.org/docs/dom-elements.html,dom;elements;react
+SyntheticEvent,https://reactjs.org/docs/events.html,syntheticevent;react
+Test Utilities,https://reactjs.org/docs/test-utils.html,test;utilities;react
+Test Renderer,https://reactjs.org/docs/test-renderer.html,test;renderer;react
+JS Environment Requirements,https://reactjs.org/docs/javascript-environment-requirements.html,js;environment;requirements;react
+Glossary,https://reactjs.org/docs/glossary.html,glossary;react
+Introducing Hooks,https://reactjs.org/docs/hooks-intro.html,introducing;hooks;react
+Hooks at a Glance,https://reactjs.org/docs/hooks-overview.html,hooks;glance;react
+Using the State Hook,https://reactjs.org/docs/hooks-state.html,using;state;hook;react
+Using the Effect Hook,https://reactjs.org/docs/hooks-effect.html,using;effect;hook;react
+Rules of Hooks,https://reactjs.org/docs/hooks-rules.html,rules;hooks;react
+Building Your Own Hooks,https://reactjs.org/docs/hooks-custom.html,building;your;own;hooks;react
+Hooks API Reference,https://reactjs.org/docs/hooks-reference.html,hooks;api;reference;react
+Hooks FAQ,https://reactjs.org/docs/hooks-faq.html,hooks;faq;react
+Testing Overview,https://reactjs.org/docs/testing.html,testing;overview;react
+Testing Recipes,https://reactjs.org/docs/testing-recipes.html,testing;recipes;react
+Testing Environments,https://reactjs.org/docs/testing-environments.html,testing;environments;react
+Introducing Concurrent Mode,https://reactjs.org/docs/concurrent-mode-intro.html,introducing;concurrent;mode;react
+Suspense for Data Fetching,https://reactjs.org/docs/concurrent-mode-suspense.html,suspense;data;fetching;react
+Concurrent UI Patterns,https://reactjs.org/docs/concurrent-mode-patterns.html,concurrent;ui;patterns;react
+Adopting Concurrent Mode,https://reactjs.org/docs/concurrent-mode-adoption.html,adopting;concurrent;mode;react
+Concurrent Mode API Reference,https://reactjs.org/docs/concurrent-mode-reference.html,concurrent;mode;api;reference;react
+How to Contribute,https://reactjs.org/docs/how-to-contribute.html,how;contribute;react
+Codebase Overview,https://reactjs.org/docs/codebase-overview.html,codebase;overview;react
+Implementation Notes,https://reactjs.org/docs/implementation-notes.html,implementation;notes;react
+Design Principles,https://reactjs.org/docs/design-principles.html,design;principles;react
+AJAX and APIs,https://reactjs.org/docs/faq-ajax.html,ajax;apis;react
+Babel JSX and Build Steps,https://reactjs.org/docs/faq-build.html,babel;jsx;build;steps;react
+Passing Functions to Components,https://reactjs.org/docs/faq-functions.html,passing;functions;components;react
+Component State,https://reactjs.org/docs/faq-state.html,component;state;react
+Styling and CSS,https://reactjs.org/docs/faq-styling.html,styling;css;react
+File Structure,https://reactjs.org/docs/faq-structure.html,file;structure;react
+Versioning Policy,https://reactjs.org/docs/faq-versioning.html,versioning;policy;react
+Virtual DOM and Internals,https://reactjs.org/docs/faq-internals.html,virtual;dom;internals;react

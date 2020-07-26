@@ -1,0 +1,368 @@
+title,link,tags
+Kotlin for Server Side,https://kotlinlang.org/docs/reference/server-overview.html,kotlin;server;side;kotlin
+Kotlin for Android,https://kotlinlang.org/docs/reference/android-overview.html,kotlin;android;kotlin
+Kotlin for JavaScript,https://kotlinlang.org/docs/reference/js-overview.html,kotlin;javascript;kotlin
+Kotlin for Native,https://kotlinlang.org/docs/reference/native-overview.html,kotlin;native;kotlin
+Kotlin for Data Science,https://kotlinlang.org/docs/reference/data-science-overview.html,kotlin;data;science;kotlin
+Coroutines,https://kotlinlang.org/docs/reference/coroutines-overview.html,coroutines;kotlin
+Multiplatform,https://kotlinlang.org/docs/reference/multiplatform.html,multiplatform;kotlin
+What's New in 1.3,https://kotlinlang.org/docs/reference/whatsnew13.html,new;kotlin
+What's New in 1.2,https://kotlinlang.org/docs/reference/whatsnew12.html,new;kotlin
+What's New in 1.1,https://kotlinlang.org/docs/reference/whatsnew11.html,new;kotlin
+Basic Syntax,https://kotlinlang.org/docs/reference/basic-syntax.html,basic;syntax;kotlin
+Idioms,https://kotlinlang.org/docs/reference/idioms.html,idioms;kotlin
+Coding Conventions,https://kotlinlang.org/docs/reference/coding-conventions.html,coding;conventions;kotlin
+Basic Types,https://kotlinlang.org/docs/reference/basic-types.html,basic;types;kotlin
+Packages and Imports,https://kotlinlang.org/docs/reference/packages.html,packages;imports;kotlin
+Control Flow,https://kotlinlang.org/docs/reference/control-flow.html,control;flow;kotlin
+Returns and Jumps,https://kotlinlang.org/docs/reference/returns.html,returns;jumps;kotlin
+Classes and Inheritance,https://kotlinlang.org/docs/reference/classes.html,classes;inheritance;kotlin
+Properties and Fields,https://kotlinlang.org/docs/reference/properties.html,properties;fields;kotlin
+Interfaces,https://kotlinlang.org/docs/reference/interfaces.html,interfaces;kotlin
+Visibility Modifiers,https://kotlinlang.org/docs/reference/visibility-modifiers.html,visibility;modifiers;kotlin
+Extensions,https://kotlinlang.org/docs/reference/extensions.html,extensions;kotlin
+Data Classes,https://kotlinlang.org/docs/reference/data-classes.html,data;classes;kotlin
+Sealed Classes,https://kotlinlang.org/docs/reference/sealed-classes.html,sealed;classes;kotlin
+Generics,https://kotlinlang.org/docs/reference/generics.html,generics;kotlin
+Nested Classes,https://kotlinlang.org/docs/reference/nested-classes.html,nested;classes;kotlin
+Enum Classes,https://kotlinlang.org/docs/reference/enum-classes.html,enum;classes;kotlin
+Objects,https://kotlinlang.org/docs/reference/object-declarations.html,objects;kotlin
+Type Aliases,https://kotlinlang.org/docs/reference/type-aliases.html,type;aliases;kotlin
+Inline Classes,https://kotlinlang.org/docs/reference/inline-classes.html,inline;classes;kotlin
+Delegation,https://kotlinlang.org/docs/reference/delegation.html,delegation;kotlin
+Delegated Properties,https://kotlinlang.org/docs/reference/delegated-properties.html,delegated;properties;kotlin
+Functions,https://kotlinlang.org/docs/reference/functions.html,functions;kotlin
+Lambdas,https://kotlinlang.org/docs/reference/lambdas.html,lambdas;kotlin
+Inline Functions,https://kotlinlang.org/docs/reference/inline-functions.html,inline;functions;kotlin
+Collections Overview,https://kotlinlang.org/docs/reference/collections-overview.html,collections;overview;kotlin
+Constructing Collections,https://kotlinlang.org/docs/reference/constructing-collections.html,constructing;collections;kotlin
+Iterators,https://kotlinlang.org/docs/reference/iterators.html,iterators;kotlin
+Ranges and Progressions,https://kotlinlang.org/docs/reference/ranges.html,ranges;progressions;kotlin
+Sequences,https://kotlinlang.org/docs/reference/sequences.html,sequences;kotlin
+Operations Overview,https://kotlinlang.org/docs/reference/collection-operations.html,operations;overview;kotlin
+Transformations,https://kotlinlang.org/docs/reference/collection-transformations.html,transformations;kotlin
+Filtering,https://kotlinlang.org/docs/reference/collection-filtering.html,filtering;kotlin
+Plus and Minus Operators,https://kotlinlang.org/docs/reference/collection-plus-minus.html,plus;minus;operators;kotlin
+Grouping,https://kotlinlang.org/docs/reference/collection-grouping.html,grouping;kotlin
+Retrieving Collection Parts,https://kotlinlang.org/docs/reference/collection-parts.html,retrieving;collection;parts;kotlin
+Retrieving Single Elements,https://kotlinlang.org/docs/reference/collection-elements.html,retrieving;single;elements;kotlin
+Ordering,https://kotlinlang.org/docs/reference/collection-ordering.html,ordering;kotlin
+Aggregate Operations,https://kotlinlang.org/docs/reference/collection-aggregate.html,aggregate;operations;kotlin
+Collection Write Operations,https://kotlinlang.org/docs/reference/collection-write.html,collection;write;operations;kotlin
+List Specific Operations,https://kotlinlang.org/docs/reference/list-operations.html,list;specific;operations;kotlin
+Set Specific Operations,https://kotlinlang.org/docs/reference/set-operations.html,set;specific;operations;kotlin
+Map Specific Operations,https://kotlinlang.org/docs/reference/map-operations.html,map;specific;operations;kotlin
+Coroutines Guide,https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html,coroutines;guide;kotlin
+Basics,https://kotlinlang.org/docs/reference/coroutines/basics.html,basics;kotlin
+Cancellation and Timeouts,https://kotlinlang.org/docs/reference/coroutines/cancellation-and-timeouts.html,cancellation;timeouts;kotlin
+Composing Suspending Functions,https://kotlinlang.org/docs/reference/coroutines/composing-suspending-functions.html,composing;suspending;functions;kotlin
+Coroutine Context and Dispatchers,https://kotlinlang.org/docs/reference/coroutines/coroutine-context-and-dispatchers.html,coroutine;context;dispatchers;kotlin
+Asynchronous Flow,https://kotlinlang.org/docs/reference/coroutines/flow.html,asynchronous;flow;kotlin
+Channels,https://kotlinlang.org/docs/reference/coroutines/channels.html,channels;kotlin
+Exception Handling and Supervision,https://kotlinlang.org/docs/reference/coroutines/exception-handling.html,exception;handling;supervision;kotlin
+Shared Mutable State and Concurrency,https://kotlinlang.org/docs/reference/coroutines/shared-mutable-state-and-concurrency.html,shared;mutable;state;concurrency;kotlin
+Select Expression (experimental),https://kotlinlang.org/docs/reference/coroutines/select-expression.html,select;expression;kotlin
+Platform-Specific Declarations,https://kotlinlang.org/docs/reference/platform-specific-declarations.html,platform-specific;declarations;kotlin
+Building with Gradle,https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html,building;gradle;kotlin
+Multiplatform Gradle DSL Reference,https://kotlinlang.org/docs/reference/mpp-dsl-reference.html,multiplatform;gradle;dsl;reference;kotlin
+Destructuring Declarations,https://kotlinlang.org/docs/reference/multi-declarations.html,destructuring;declarations;kotlin
+Type Checks and Casts,https://kotlinlang.org/docs/reference/typecasts.html,type;checks;casts;kotlin
+This expressions,https://kotlinlang.org/docs/reference/this-expressions.html,this;expressions;kotlin
+Equality,https://kotlinlang.org/docs/reference/equality.html,equality;kotlin
+Operator overloading,https://kotlinlang.org/docs/reference/operator-overloading.html,operator;overloading;kotlin
+Null Safety,https://kotlinlang.org/docs/reference/null-safety.html,null;safety;kotlin
+Exceptions,https://kotlinlang.org/docs/reference/exceptions.html,exceptions;kotlin
+Annotations,https://kotlinlang.org/docs/reference/annotations.html,annotations;kotlin
+Reflection,https://kotlinlang.org/docs/reference/reflection.html,reflection;kotlin
+Scope Functions,https://kotlinlang.org/docs/reference/scope-functions.html,scope;functions;kotlin
+Type-Safe Builders,https://kotlinlang.org/docs/reference/type-safe-builders.html,type-safe;builders;kotlin
+Opt-in Requirements,https://kotlinlang.org/docs/reference/opt-in-requirements.html,opt-in;requirements;kotlin
+Standard Library,https://kotlinlang.org/api/latest/jvm/stdlib/index.html,standard;library;kotlin
+kotlin.test,https://kotlinlang.org/api/latest/kotlin.test/index.html,kotlin
+Keywords and operators,https://kotlinlang.org/docs/reference/keyword-reference.html,keywords;operators;kotlin
+Grammar,https://kotlinlang.org/docs/reference/grammar.html,grammar;kotlin
+Coding style conventions,https://kotlinlang.org/docs/reference/code-style-migration-guide.html,coding;style;conventions;kotlin
+Calling Java from Kotlin,https://kotlinlang.org/docs/reference/java-interop.html,calling;java;kotlin;kotlin
+Calling Kotlin from Java,https://kotlinlang.org/docs/reference/java-to-kotlin-interop.html,calling;kotlin;java;kotlin
+Setting Up a Project,https://kotlinlang.org/docs/reference/js-project-setup.html,setting;up;project;kotlin
+Dynamic Type,https://kotlinlang.org/docs/reference/dynamic-type.html,dynamic;type;kotlin
+Calling JavaScript from Kotlin,https://kotlinlang.org/docs/reference/js-interop.html,calling;javascript;kotlin;kotlin
+Calling Kotlin from JavaScript,https://kotlinlang.org/docs/reference/js-to-kotlin-interop.html,calling;kotlin;javascript;kotlin
+JavaScript Modules,https://kotlinlang.org/docs/reference/js-modules.html,javascript;modules;kotlin
+JavaScript Reflection,https://kotlinlang.org/docs/reference/js-reflection.html,javascript;reflection;kotlin
+JavaScript DCE,https://kotlinlang.org/docs/reference/javascript-dce.html,javascript;dce;kotlin
+Concurrency,https://kotlinlang.org/docs/reference/native/concurrency.html,concurrency;kotlin
+Immutability,https://kotlinlang.org/docs/reference/native/immutability.html,immutability;kotlin
+Kotlin Libraries,https://kotlinlang.org/docs/reference/native/libraries.html,kotlin;libraries;kotlin
+Platform Libraries,https://kotlinlang.org/docs/reference/native/platform_libs.html,platform;libraries;kotlin
+C Interop,https://kotlinlang.org/docs/reference/native/c_interop.html,c;interop;kotlin
+Objective-C and Swift Interop,https://kotlinlang.org/docs/reference/native/objc_interop.html,objective-c;swift;interop;kotlin
+Symbolicating iOS crash reports,https://kotlinlang.org/docs/reference/native/ios_symbolication.html,symbolicating;ios;crash;reports;kotlin
+CocoaPods Integration,https://kotlinlang.org/docs/reference/native/cocoapods.html,cocoapods;integration;kotlin
+Gradle Plugin,https://kotlinlang.org/docs/reference/native/gradle_plugin.html,gradle;plugin;kotlin
+Debugging,https://kotlinlang.org/docs/reference/native/debugging.html,debugging;kotlin
+FAQ,https://kotlinlang.org/docs/reference/native/faq.html,faq;kotlin
+Gradle,https://kotlinlang.org/docs/reference/using-gradle.html,gradle;kotlin
+Maven,https://kotlinlang.org/docs/reference/using-maven.html,maven;kotlin
+Ant,https://kotlinlang.org/docs/reference/using-ant.html,ant;kotlin
+Compiler options,https://kotlinlang.org/docs/reference/compiler-reference.html,compiler;options;kotlin
+Compiler plugins,https://kotlinlang.org/docs/reference/compiler-plugins.html,compiler;plugins;kotlin
+Kapt,https://kotlinlang.org/docs/reference/kapt.html,kapt;kotlin
+Dokka,https://kotlinlang.org/docs/reference/kotlin-doc.html,dokka;kotlin
+OSGi,https://kotlinlang.org/docs/reference/kotlin-osgi.html,osgi;kotlin
+Kotlin Evolution,https://kotlinlang.org/docs/reference/evolution/kotlin-evolution.html,kotlin;evolution;kotlin
+Stability of different components,https://kotlinlang.org/docs/reference/evolution/components-stability.html,stability;different;components;kotlin
+Compatibility Guide for Kotlin 1.3,https://kotlinlang.org/docs/reference/compatibility-guide-13.html,compatibility;guide;kotlin;kotlin
+FAQ,https://kotlinlang.org/docs/reference/faq.html,faq;kotlin
+Comparison to Java,https://kotlinlang.org/docs/reference/comparison-to-java.html,comparison;java;kotlin
+Asymptotic Notation,https://learnxinyminutes.com/docs/asymptotic-notation/,asymptotic;notation
+Dynamic Programming,https://learnxinyminutes.com/docs/dynamic-programming/,dynamic;programming
+Lambda Calculus,https://learnxinyminutes.com/docs/lambda-calculus/,lambda;calculus
+Set theory,https://learnxinyminutes.com/docs/set-theory/,set;theory
+asciidoc,https://learnxinyminutes.com/docs/asciidoc/,asciidoc
+bc,https://learnxinyminutes.com/docs/bc/,bc
+bf,https://learnxinyminutes.com/docs/bf/,bf
+c,https://learnxinyminutes.com/docs/c/,c
+c#,https://learnxinyminutes.com/docs/csharp/,
+c++,https://learnxinyminutes.com/docs/c++/,c++
+chapel,https://learnxinyminutes.com/docs/chapel/,chapel
+CHICKEN,https://learnxinyminutes.com/docs/CHICKEN/,chicken
+clojure,https://learnxinyminutes.com/docs/clojure/,clojure
+clojure macros,https://learnxinyminutes.com/docs/clojure-macros/,clojure;macros
+COBOL,https://learnxinyminutes.com/docs/cobol/,cobol
+coffeescript,https://learnxinyminutes.com/docs/coffeescript/,coffeescript
+coldfusion,https://learnxinyminutes.com/docs/coldfusion/,coldfusion
+Common Lisp,https://learnxinyminutes.com/docs/common-lisp/,common;lisp
+Coq,https://learnxinyminutes.com/docs/coq/,coq
+crystal,https://learnxinyminutes.com/docs/crystal/,crystal
+css,https://learnxinyminutes.com/docs/css/,css
+cypher,https://learnxinyminutes.com/docs/cypher/,cypher
+D,https://learnxinyminutes.com/docs/d/,d
+dart,https://learnxinyminutes.com/docs/dart/,dart
+Dhall,https://learnxinyminutes.com/docs/dhall/,dhall
+docker,https://learnxinyminutes.com/docs/docker/,docker
+edn,https://learnxinyminutes.com/docs/edn/,edn
+elisp,https://learnxinyminutes.com/docs/elisp/,elisp
+elixir,https://learnxinyminutes.com/docs/elixir/,elixir
+Elm,https://learnxinyminutes.com/docs/elm/,elm
+erlang,https://learnxinyminutes.com/docs/erlang/,erlang
+F#,https://learnxinyminutes.com/docs/fsharp/,
+factor,https://learnxinyminutes.com/docs/factor/,factor
+forth,https://learnxinyminutes.com/docs/forth/,forth
+Fortran,https://learnxinyminutes.com/docs/fortran95/,fortran
+Go,https://learnxinyminutes.com/docs/go/,go
+Groovy,https://learnxinyminutes.com/docs/groovy/,groovy
+Hack,https://learnxinyminutes.com/docs/hack/,hack
+haml,https://learnxinyminutes.com/docs/haml/,haml
+Haskell,https://learnxinyminutes.com/docs/haskell/,haskell
+haxe,https://learnxinyminutes.com/docs/haxe/,haxe
+hdl,https://learnxinyminutes.com/docs/hdl/,hdl
+HQ9+,https://learnxinyminutes.com/docs/hq9+/,
+html,https://learnxinyminutes.com/docs/html/,html
+hy,https://learnxinyminutes.com/docs/hy/,hy
+Inform7,https://learnxinyminutes.com/docs/inform7/,
+java,https://learnxinyminutes.com/docs/java/,java
+javascript,https://learnxinyminutes.com/docs/javascript/,javascript
+json,https://learnxinyminutes.com/docs/json/,json
+jsonnet,https://learnxinyminutes.com/docs/jsonnet/,jsonnet
+Julia,https://learnxinyminutes.com/docs/julia/,julia
+kdb+,https://learnxinyminutes.com/docs/kdb+/,kdb+
+kotlin,https://learnxinyminutes.com/docs/kotlin/,kotlin
+latex,https://learnxinyminutes.com/docs/latex/,latex
+LDPL,https://learnxinyminutes.com/docs/ldpl/,ldpl
+less,https://learnxinyminutes.com/docs/less/,
+Lisp Flavoured Erlang(LFE),https://learnxinyminutes.com/docs/lfe/,lisp;flavoured
+LiveScript,https://learnxinyminutes.com/docs/livescript/,livescript
+Logtalk,https://learnxinyminutes.com/docs/logtalk/,logtalk
+LOLCODE,https://learnxinyminutes.com/docs/LOLCODE/,lolcode
+Lua,https://learnxinyminutes.com/docs/lua/,lua
+M (MUMPS),https://learnxinyminutes.com/docs/m/,m
+markdown,https://learnxinyminutes.com/docs/markdown/,markdown
+Matlab,https://learnxinyminutes.com/docs/matlab/,matlab
+mercury,https://learnxinyminutes.com/docs/mercury/,mercury
+MIPS Assembly,https://learnxinyminutes.com/docs/mips/,mips;assembly
+montilang,https://learnxinyminutes.com/docs/montilang/,montilang
+moonscript,https://learnxinyminutes.com/docs/moonscript/,moonscript
+neat,https://learnxinyminutes.com/docs/neat/,neat
+Nim,https://learnxinyminutes.com/docs/nim/,nim
+nix,https://learnxinyminutes.com/docs/nix/,nix
+Objective-C,https://learnxinyminutes.com/docs/objective-c/,objective-c
+OCaml,https://learnxinyminutes.com/docs/ocaml/,ocaml
+Paren,https://learnxinyminutes.com/docs/paren/,paren
+Pascal,https://learnxinyminutes.com/docs/pascal/,pascal
+Pascal,https://learnxinyminutes.com/docs/ru-ru/pascal-ru/,pascal
+PCRE,https://learnxinyminutes.com/docs/pcre/,pcre
+perl,https://learnxinyminutes.com/docs/perl/,perl
+PHP,https://learnxinyminutes.com/docs/php/,php
+Pod,https://learnxinyminutes.com/docs/raku-pod/,pod
+pogoscript,https://learnxinyminutes.com/docs/pogo/,pogoscript
+processing,https://learnxinyminutes.com/docs/processing/,processing
+prolog,https://learnxinyminutes.com/docs/prolog/,prolog
+protocol-buffers,https://learnxinyminutes.com/docs/protocol-buffer-3/,protocol-buffers
+Pug,https://learnxinyminutes.com/docs/pug/,pug
+purescript,https://learnxinyminutes.com/docs/purescript/,purescript
+Python,https://learnxinyminutes.com/docs/python/,python
+Python 2 (legacy),https://learnxinyminutes.com/docs/pythonlegacy/,python
+R,https://learnxinyminutes.com/docs/r/,r
+racket,https://learnxinyminutes.com/docs/racket/,racket
+Raku,https://learnxinyminutes.com/docs/raku/,raku
+reason,https://learnxinyminutes.com/docs/reason/,reason
+Red,https://learnxinyminutes.com/docs/red/,red
+restructured text (RST),https://learnxinyminutes.com/docs/rst/,restructured;text
+ruby,https://learnxinyminutes.com/docs/ruby/,ruby
+Rust,https://learnxinyminutes.com/docs/rust/,rust
+sass,https://learnxinyminutes.com/docs/sass/,sass
+Scala,https://learnxinyminutes.com/docs/scala/,scala
+self,https://learnxinyminutes.com/docs/self/,self
+SmallBASIC,https://learnxinyminutes.com/docs/smallbasic/,smallbasic
+Smalltalk,https://learnxinyminutes.com/docs/smalltalk/,smalltalk
+Solidity,https://learnxinyminutes.com/docs/solidity/,solidity
+SQL,https://learnxinyminutes.com/docs/sql/,sql
+Standard ML,https://learnxinyminutes.com/docs/standard-ml/,standard;ml
+stylus,https://learnxinyminutes.com/docs/stylus/,stylus
+swift,https://learnxinyminutes.com/docs/swift/,swift
+Tcl,https://learnxinyminutes.com/docs/tcl/,tcl
+textile,https://learnxinyminutes.com/docs/textile/,textile
+toml,https://learnxinyminutes.com/docs/toml/,toml
+TypeScript,https://learnxinyminutes.com/docs/typescript/,typescript
+vala,https://learnxinyminutes.com/docs/vala/,vala
+Vimscript,https://learnxinyminutes.com/docs/vimscript/,vimscript
+Visual Basic,https://learnxinyminutes.com/docs/visualbasic/,visual;basic
+Vyper,https://learnxinyminutes.com/docs/vyper/,vyper
+WebAssembly,https://learnxinyminutes.com/docs/wasm/,webassembly
+whip,https://learnxinyminutes.com/docs/whip/,whip
+wolfram,https://learnxinyminutes.com/docs/wolfram/,wolfram
+xml,https://learnxinyminutes.com/docs/xml/,xml
+yaml,https://learnxinyminutes.com/docs/yaml/,yaml
+amd,https://learnxinyminutes.com/docs/amd/,amd
+AngularJS,https://learnxinyminutes.com/docs/angularjs/,angularjs
+ansible,https://learnxinyminutes.com/docs/ansible/,ansible
+awk,https://learnxinyminutes.com/docs/awk/,awk
+bash,https://learnxinyminutes.com/docs/bash/,bash
+cmake,https://learnxinyminutes.com/docs/cmake/,cmake
+compojure,https://learnxinyminutes.com/docs/compojure/,compojure
+composer,https://learnxinyminutes.com/docs/php-composer/,composer
+DirectX 9,https://learnxinyminutes.com/docs/directx9/,directx
+emacs,https://learnxinyminutes.com/docs/emacs/,emacs
+git,https://learnxinyminutes.com/docs/git/,git
+jquery,https://learnxinyminutes.com/docs/jquery/,jquery
+linker,https://learnxinyminutes.com/docs/linker/,linker
+make,https://learnxinyminutes.com/docs/make/,make
+Mercurial,https://learnxinyminutes.com/docs/mercurial/,mercurial
+messagepack,https://learnxinyminutes.com/docs/messagepack/,messagepack
+OpenCV,https://learnxinyminutes.com/docs/opencv/,opencv
+OpenGL,https://learnxinyminutes.com/docs/opengl/,opengl
+p5,https://learnxinyminutes.com/docs/p5/,
+powershell,https://learnxinyminutes.com/docs/powershell/,powershell
+PyQT,https://learnxinyminutes.com/docs/pyqt/,pyqt
+Qt Framework,https://learnxinyminutes.com/docs/qt/,qt;framework
+ruby ecosystem,https://learnxinyminutes.com/docs/ruby-ecosystem/,ruby;ecosystem
+ShutIt,https://learnxinyminutes.com/docs/shutit/,shutit
+Statistical Computing with Python,https://learnxinyminutes.com/docs/pythonstatcomp/,statistical;computing;python
+tcsh,https://learnxinyminutes.com/docs/tcsh/,tcsh
+tmux,https://learnxinyminutes.com/docs/tmux/,tmux
+vim,https://learnxinyminutes.com/docs/vim/,vim
+zfs,https://learnxinyminutes.com/docs/zfs/,zfs
+Getting Started,https://reactjs.org/docs/getting-started.html,getting;started;react
+Add React to a Website,https://reactjs.org/docs/add-react-to-a-website.html,add;react;website;react
+Create a New React App,https://reactjs.org/docs/create-a-new-react-app.html,create;new;react;app;react
+CDN Links,https://reactjs.org/docs/cdn-links.html,cdn;links;react
+Release Channels,https://reactjs.org/docs/release-channels.html,release;channels;react
+Hello World,https://reactjs.org/docs/hello-world.html,hello;world;react
+Introducing JSX,https://reactjs.org/docs/introducing-jsx.html,introducing;jsx;react
+Rendering Elements,https://reactjs.org/docs/rendering-elements.html,rendering;elements;react
+Components and Props,https://reactjs.org/docs/components-and-props.html,components;props;react
+State and Lifecycle,https://reactjs.org/docs/state-and-lifecycle.html,state;lifecycle;react
+Handling Events,https://reactjs.org/docs/handling-events.html,handling;events;react
+Conditional Rendering,https://reactjs.org/docs/conditional-rendering.html,conditional;rendering;react
+Lists and Keys,https://reactjs.org/docs/lists-and-keys.html,lists;keys;react
+Forms,https://reactjs.org/docs/forms.html,forms;react
+Lifting State Up,https://reactjs.org/docs/lifting-state-up.html,lifting;state;up;react
+Composition vs Inheritance,https://reactjs.org/docs/composition-vs-inheritance.html,composition;vs;inheritance;react
+Thinking In React,https://reactjs.org/docs/thinking-in-react.html,thinking;in;react;react
+Accessibility,https://reactjs.org/docs/accessibility.html,accessibility;react
+Code-Splitting,https://reactjs.org/docs/code-splitting.html,code-splitting;react
+Context,https://reactjs.org/docs/context.html,context;react
+Error Boundaries,https://reactjs.org/docs/error-boundaries.html,error;boundaries;react
+Forwarding Refs,https://reactjs.org/docs/forwarding-refs.html,forwarding;refs;react
+Fragments,https://reactjs.org/docs/fragments.html,fragments;react
+Higher-Order Components,https://reactjs.org/docs/higher-order-components.html,higher-order;components;react
+Integrating with Other Libraries,https://reactjs.org/docs/integrating-with-other-libraries.html,integrating;other;libraries;react
+JSX In Depth,https://reactjs.org/docs/jsx-in-depth.html,jsx;in;depth;react
+Optimizing Performance,https://reactjs.org/docs/optimizing-performance.html,optimizing;performance;react
+Portals,https://reactjs.org/docs/portals.html,portals;react
+Profiler,https://reactjs.org/docs/profiler.html,profiler;react
+React Without ES6,https://reactjs.org/docs/react-without-es6.html,react;without;react
+React Without JSX,https://reactjs.org/docs/react-without-jsx.html,react;without;jsx;react
+Reconciliation,https://reactjs.org/docs/reconciliation.html,reconciliation;react
+Refs and the DOM,https://reactjs.org/docs/refs-and-the-dom.html,refs;dom;react
+Render Props,https://reactjs.org/docs/render-props.html,render;props;react
+Static Type Checking,https://reactjs.org/docs/static-type-checking.html,static;type;checking;react
+Strict Mode,https://reactjs.org/docs/strict-mode.html,strict;mode;react
+Typechecking With PropTypes,https://reactjs.org/docs/typechecking-with-proptypes.html,typechecking;with;proptypes;react
+Uncontrolled Components,https://reactjs.org/docs/uncontrolled-components.html,uncontrolled;components;react
+Web Components,https://reactjs.org/docs/web-components.html,web;components;react
+React,https://reactjs.org/docs/react-api.html,react;react
+React.Component,https://reactjs.org/docs/react-component.html,react
+ReactDOM,https://reactjs.org/docs/react-dom.html,reactdom;react
+ReactDOMServer,https://reactjs.org/docs/react-dom-server.html,reactdomserver;react
+DOM Elements,https://reactjs.org/docs/dom-elements.html,dom;elements;react
+SyntheticEvent,https://reactjs.org/docs/events.html,syntheticevent;react
+Test Utilities,https://reactjs.org/docs/test-utils.html,test;utilities;react
+Test Renderer,https://reactjs.org/docs/test-renderer.html,test;renderer;react
+JS Environment Requirements,https://reactjs.org/docs/javascript-environment-requirements.html,js;environment;requirements;react
+Glossary,https://reactjs.org/docs/glossary.html,glossary;react
+Introducing Hooks,https://reactjs.org/docs/hooks-intro.html,introducing;hooks;react
+Hooks at a Glance,https://reactjs.org/docs/hooks-overview.html,hooks;glance;react
+Using the State Hook,https://reactjs.org/docs/hooks-state.html,using;state;hook;react
+Using the Effect Hook,https://reactjs.org/docs/hooks-effect.html,using;effect;hook;react
+Rules of Hooks,https://reactjs.org/docs/hooks-rules.html,rules;hooks;react
+Building Your Own Hooks,https://reactjs.org/docs/hooks-custom.html,building;your;own;hooks;react
+Hooks API Reference,https://reactjs.org/docs/hooks-reference.html,hooks;api;reference;react
+Hooks FAQ,https://reactjs.org/docs/hooks-faq.html,hooks;faq;react
+Testing Overview,https://reactjs.org/docs/testing.html,testing;overview;react
+Testing Recipes,https://reactjs.org/docs/testing-recipes.html,testing;recipes;react
+Testing Environments,https://reactjs.org/docs/testing-environments.html,testing;environments;react
+Introducing Concurrent Mode,https://reactjs.org/docs/concurrent-mode-intro.html,introducing;concurrent;mode;react
+Suspense for Data Fetching,https://reactjs.org/docs/concurrent-mode-suspense.html,suspense;data;fetching;react
+Concurrent UI Patterns,https://reactjs.org/docs/concurrent-mode-patterns.html,concurrent;ui;patterns;react
+Adopting Concurrent Mode,https://reactjs.org/docs/concurrent-mode-adoption.html,adopting;concurrent;mode;react
+Concurrent Mode API Reference,https://reactjs.org/docs/concurrent-mode-reference.html,concurrent;mode;api;reference;react
+How to Contribute,https://reactjs.org/docs/how-to-contribute.html,how;contribute;react
+Codebase Overview,https://reactjs.org/docs/codebase-overview.html,codebase;overview;react
+Implementation Notes,https://reactjs.org/docs/implementation-notes.html,implementation;notes;react
+Design Principles,https://reactjs.org/docs/design-principles.html,design;principles;react
+AJAX and APIs,https://reactjs.org/docs/faq-ajax.html,ajax;apis;react
+Babel JSX and Build Steps,https://reactjs.org/docs/faq-build.html,babel;jsx;build;steps;react
+Passing Functions to Components,https://reactjs.org/docs/faq-functions.html,passing;functions;components;react
+Component State,https://reactjs.org/docs/faq-state.html,component;state;react
+Styling and CSS,https://reactjs.org/docs/faq-styling.html,styling;css;react
+File Structure,https://reactjs.org/docs/faq-structure.html,file;structure;react
+Versioning Policy,https://reactjs.org/docs/faq-versioning.html,versioning;policy;react
+Virtual DOM and Internals,https://reactjs.org/docs/faq-internals.html,virtual;dom;internals;react
+Introducing Spring Boot,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-introducing-spring-boot,introducing;spring;boot;spring-boot;spring
+System Requirements,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-system-requirements,system;requirements;spring-boot;spring
+Servlet Containers,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-system-requirements-servlet-containers,servlet;containers;spring-boot;spring
+Installing Spring Boot,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-installing-spring-boot,installing;spring;boot;spring-boot;spring
+Installation Instructions for the Java Developer,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-installation-instructions-for-java,installation;instructions;java;developer;spring-boot;spring
+Maven Installation,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-maven-installation,maven;installation;spring-boot;spring
+Gradle Installation,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-gradle-installation,gradle;installation;spring-boot;spring
+Installing the Spring Boot CLI,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-installing-the-cli,installing;spring;boot;cli;spring-boot;spring
+Manual Installation,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-manual-cli-installation,manual;installation;spring-boot;spring
+Installation with SDKMAN!,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-sdkman-cli-installation,installation;spring-boot;spring
+OSX Homebrew Installation,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-homebrew-cli-installation,osx;homebrew;installation;spring-boot;spring
+MacPorts Installation,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-macports-cli-installation,macports;installation;spring-boot;spring
+Command-line Completion,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-cli-command-line-completion,command-line;completion;spring-boot;spring
+Windows Scoop Installation,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-scoop-cli-installation,windows;scoop;installation;spring-boot;spring
+Quick-start Spring CLI Example,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-cli-example,quick-start;spring;cli;example;spring-boot;spring
+Upgrading from an Earlier Version of Spring Boot,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-upgrading-from-an-earlier-version,upgrading;earlier;version;spring;boot;spring-boot;spring
+Developing Your First Spring Boot Application,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application,developing;your;first;spring;boot;application;spring-boot;spring
+Creating the POM,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-pom,creating;pom;spring-boot;spring
+Adding Classpath Dependencies,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-dependencies,adding;classpath;dependencies;spring-boot;spring
+Writing the Code,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-code,writing;code;spring-boot;spring
+The @RestController and @RequestMapping Annotations,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-annotations,the;annotations;spring-boot;spring
+The @EnableAutoConfiguration Annotation,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-auto-configuration,the;annotation;spring-boot;spring
+The “main” Method,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-main-method,the;“main”;method;spring-boot;spring
+Running the Example,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-run,running;example;spring-boot;spring
+Creating an Executable Jar,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-first-application-executable-jar,creating;executable;jar;spring-boot;spring
+What to Read Next,https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-whats-next,what;read;next;spring-boot;spring
