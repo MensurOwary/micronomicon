@@ -8,9 +8,9 @@ import (
 	"micron/user"
 )
 
-func HandleMicronRetrieval(c *gin.Context) {
+func HandleMicronRetrieval(c *gin.Context, s Service, user *user.Service) {
 	commons.WithUsername(c, func(username string) {
-		micronRef := getRandomMicron(username)
+		micronRef := getRandomMicron(username, s, user)
 		if micronRef != nil {
 			c.JSON(200, *micronRef)
 		} else {
@@ -21,11 +21,11 @@ func HandleMicronRetrieval(c *gin.Context) {
 	})
 }
 
-func getRandomMicron(username string) *Micron {
+func getRandomMicron(username string, s Service, user *user.Service) *Micron {
 	tags := user.GetUserTags(username)
 	if len(tags) > 0 {
 		chosen := rand.Intn(len(tags))
-		micronRef := GetARandomMicronForTag(tags[chosen])
+		micronRef := s.GetARandomMicronForTag(tags[chosen])
 		return micronRef
 	} else {
 		return nil

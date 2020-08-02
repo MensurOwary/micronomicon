@@ -3,6 +3,7 @@ package user
 import (
 	"errors"
 	"github.com/gin-gonic/gin"
+	"log"
 	"micron/commons"
 	"micron/model"
 	"strings"
@@ -12,7 +13,7 @@ type AuthResponse struct {
 	AccessToken string `json:"access_token"`
 }
 
-func HandleUserRegistration(c *gin.Context) {
+func HandleUserRegistration(c *gin.Context, service *Service) {
 	createdUser := User{}
 	_ = c.BindJSON(&createdUser)
 
@@ -24,7 +25,7 @@ func HandleUserRegistration(c *gin.Context) {
 		})
 	}
 
-	Register(createdUser)
+	service.Register(createdUser)
 
 	c.JSON(201, model.DefaultResponse{
 		Message: "Created the user",
@@ -50,7 +51,7 @@ func (user *User) validateRegister() error {
 	return nil
 }
 
-func HandleUserAuthorization(c *gin.Context) {
+func HandleUserAuthorization(c *gin.Context, service *Service) {
 	createdUser := User{}
 	_ = c.BindJSON(&createdUser)
 
@@ -63,7 +64,7 @@ func HandleUserAuthorization(c *gin.Context) {
 		c.Abort()
 	}
 
-	token, err := Login(createdUser)
+	token, err := service.Login(createdUser)
 	if err != nil {
 		c.JSON(401, model.DefaultResponse{
 			Message: err.Error(),
@@ -75,20 +76,35 @@ func HandleUserAuthorization(c *gin.Context) {
 	}
 }
 
+var (
+	InvalidUsername = errors.New("username is invalid")
+	InvalidPassword = errors.New("password is invalid")
+)
+
 func (user *User) validateLogin() error {
 	if strings.TrimSpace(user.Username) == "" {
-		return errors.New("username is invalid")
+		return InvalidUsername
 	}
 
 	if strings.TrimSpace(user.Password) == "" {
-		return errors.New("password is invalid")
+		return InvalidPassword
 	}
 	return nil
 }
 
-func HandleUserByTokenRetrieval(c *gin.Context) {
+func HandleUserLogout(c *gin.Context, service *Service) {
+	token := commons.ExtractToken(c.Request.Header)
+	if !service.DeleteToken(token) {
+		log.Println("Could not delete token successfully")
+	}
+	c.JSON(200, model.DefaultResponse{
+		Message: "Successfully logged out",
+	})
+}
+
+func HandleUserByTokenRetrieval(c *gin.Context, service *Service) {
 	commons.WithUsername(c, func(username string) {
-		retrievedUser, err := GetUser(username)
+		retrievedUser, err := service.GetUser(username)
 		if err != nil {
 			c.JSON(404, err)
 		} else {
@@ -97,39 +113,42 @@ func HandleUserByTokenRetrieval(c *gin.Context) {
 	})
 }
 
-func HandleUserTagsRetrieval(c *gin.Context) {
+func HandleUserTagsRetrieval(c *gin.Context, service *Service) {
 	commons.WithUsername(c, func(username string) {
-		tags := GetUserTags(username)
+		tags := service.GetUserTags(username)
 		c.JSON(200, tags)
 	})
 }
 
-func HandleUserTagsAddition(c *gin.Context) {
+var (
+	TagsAddedSuccessfully   = model.DefaultResponse{Message: "Successfully added the tags"}
+	NewTagsCouldNotBeAdded  = model.DefaultResponse{Message: "Could not add the new tag(s)"}
+	TagsRemovedSuccessfully = model.DefaultResponse{Message: "Successfully removed the tags"}
+	TagsCouldNotBeRemoved   = model.DefaultResponse{Message: "Could not remove the tag(s)"}
+)
+
+func HandleUserTagsAddition(c *gin.Context, service *Service) {
 	commons.WithUsername(c, func(username string) {
 		body := new(map[string][]string)
 		_ = c.BindJSON(body)
 		tagIds, ok := (*body)["ids"]
-		if ok && AddTagsForUser(username, tagIds) {
-			c.JSON(200, model.DefaultResponse{
-				Message: "Successfully added the tags",
-			})
+		if ok && service.AddTagsForUser(username, tagIds) {
+			c.JSON(200, TagsAddedSuccessfully)
 		} else {
-			c.JSON(400, model.DefaultResponse{
-				Message: "Could not add the new tag(s)",
-			})
+			c.JSON(400, NewTagsCouldNotBeAdded)
 		}
 	})
 }
 
-func HandleUserTagsRemoval(c *gin.Context) {
+func HandleUserTagsRemoval(c *gin.Context, service *Service) {
 	commons.WithUsername(c, func(username string) {
 		body := new(map[string][]string)
 		_ = c.BindJSON(body)
 		tagIds, ok := (*body)["ids"]
-		if ok && RemoveTagsFromUser(username, tagIds) {
-			c.JSON(200, model.DefaultResponse{Message: "Successfully removed the tags"})
+		if ok && service.RemoveTagsFromUser(username, tagIds) {
+			c.JSON(200, TagsRemovedSuccessfully)
 		} else {
-			c.JSON(400, model.DefaultResponse{Message: "Could not remove the tag(s)"})
+			c.JSON(400, TagsCouldNotBeRemoved)
 		}
 	})
 }

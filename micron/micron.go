@@ -13,10 +13,22 @@ type Micron struct {
 	tag   tag.Tag
 }
 
-var microns = scraper.Database()
+type Service interface {
+	GetARandomMicronForTag(tag tag.Tag) *Micron
+}
 
-func GetARandomMicronForTag(tag tag.Tag) *Micron {
-	rows := microns[tag.Name]
+type service struct {
+	microns scraper.Scraper
+}
+
+func NewService(scraper scraper.Scraper) Service {
+	return &service{
+		microns: scraper,
+	}
+}
+
+func (s *service) GetARandomMicronForTag(tag tag.Tag) *Micron {
+	rows := s.microns.Database()[tag.Name]
 
 	if rows != nil {
 		chosen := rand.Intn(len(rows))

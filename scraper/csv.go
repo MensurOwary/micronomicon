@@ -14,7 +14,17 @@ type Row struct {
 
 var database map[string][]Row
 
-func Database() map[string][]Row {
+type csvDatabase struct{}
+
+type Scraper interface {
+	Database() map[string][]Row
+}
+
+func NewScraper() Scraper {
+	return &csvDatabase{}
+}
+
+func (c *csvDatabase) Database() map[string][]Row {
 	if database != nil {
 		return database
 	}

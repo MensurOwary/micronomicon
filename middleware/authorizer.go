@@ -7,12 +7,18 @@ import (
 	"log"
 	"micron/commons"
 	"micron/model"
-	"micron/user"
 	"net/http"
-	"strings"
 )
 
-func Authorizer() gin.HandlerFunc {
+type UserService interface {
+	Verify(username string) bool
+}
+
+type JwtService interface {
+	DoesJwtExist(jwt string) bool
+}
+
+func Authorizer(userService UserService, jwtService JwtService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		accessToken := extractToken(c)
 		if accessToken == "" {
@@ -23,7 +29,9 @@ func Authorizer() gin.HandlerFunc {
 				abort(c, http.StatusBadRequest, err.Error())
 			} else {
 				if claims, ok := parsedToken.Claims.(jwt.MapClaims); ok && parsedToken.Valid {
-					userVerification(c, claims)
+					if verifyToken(c, jwtService, parsedToken.Raw) {
+						userVerification(c, claims, userService)
+					}
 				} else {
 					abort(c, http.StatusBadRequest, "Token is invalid")
 				}
@@ -32,13 +40,21 @@ func Authorizer() gin.HandlerFunc {
 	}
 }
 
-func userVerification(c *gin.Context, claims jwt.MapClaims) {
-	if username, ok := claims["username"]; ok && user.Verify(username.(string)) {
+func userVerification(c *gin.Context, claims jwt.MapClaims, userService UserService) {
+	if username, ok := claims["username"]; ok && userService.Verify(username.(string)) {
 		log.Printf("User [%s] successfully requested the resource\n", username.(string))
 		c.Set("username", username)
 	} else {
 		abort(c, http.StatusUnauthorized, "Unauthorized")
 	}
+}
+
+func verifyToken(c *gin.Context, jwtService JwtService, token string) bool {
+	if !jwtService.DoesJwtExist(token) {
+		abort(c, http.StatusUnauthorized, "Token expired")
+		return false
+	}
+	return true
 }
 
 func abort(c *gin.Context, status int, message string) {
@@ -59,11 +75,5 @@ func parseToken(header string) (*jwt.Token, error) {
 }
 
 func extractToken(c *gin.Context) string {
-	header := c.Request.Header.Get("Authorization")
-	if strings.Index(header, "Bearer ") == 0 {
-		header = strings.ReplaceAll(header, "Bearer ", "")
-		header = strings.TrimSpace(header)
-		return header
-	}
-	return ""
+	return commons.ExtractToken(c.Request.Header)
 }

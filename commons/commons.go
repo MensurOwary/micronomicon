@@ -1,8 +1,12 @@
 package commons
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"micron/model"
+	"net/http"
+	"os"
+	"strings"
 )
 
 type Callable func(username string)
@@ -16,6 +20,16 @@ func WithUsername(c *gin.Context, callable Callable) {
 			Message: "username was not found",
 		})
 	}
+}
+
+func ExtractToken(header http.Header) string {
+	headerToken := header.Get("Authorization")
+	if strings.Index(headerToken, "Bearer ") == 0 {
+		headerToken = strings.ReplaceAll(headerToken, "Bearer ", "")
+		headerToken = strings.TrimSpace(headerToken)
+		return headerToken
+	}
+	return ""
 }
 
 func Union(a []string, b []string) []string {
@@ -46,4 +60,12 @@ func Difference(a []string, b []string) []string {
 		}
 	}
 	return z
+}
+
+func GetEnv(key string) string {
+	value := os.Getenv(key)
+	if value == "" {
+		panic(fmt.Sprintf("Missing the value for the environment variable [%s]", key))
+	}
+	return value
 }

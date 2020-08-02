@@ -2,67 +2,52 @@ package user
 
 import (
 	"errors"
-	"github.com/dgrijalva/jwt-go"
-	"golang.org/x/crypto/bcrypt"
 	"log"
-	"micron/commons"
 	"micron/tag"
 )
 
-type User struct {
-	Username string `json:"username"`
-	Email    string `json:"email"`
-	Name     string `json:"name"`
-	Password string `json:"password"`
-}
+var (
+	TokenCouldNotBeCreated = errors.New("could not create the token")
+	IncorrectPassword      = errors.New("password is incorrect")
+	NotFound               = errors.New("user does not exist")
+)
 
-type Account struct {
-	Username string   `json:"username"`
-	Name     string   `json:"name"`
-	Email    string   `json:"email"`
-	Tags     tag.Tags `json:"tags"`
-}
-
-func Register(user User) {
+func (s *Service) Register(user User) {
 	password := user.Password
-	hashedBytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
+	encrypted, err := s.encrypt.Encrypt(password)
 	if err != nil {
-		log.Fatal("Could not hash the user password")
+		log.Println(err)
 	}
-	user.Password = string(hashedBytes)
-	DoSaveUser(&user)
+	user.Password = encrypted
+	s.store.SaveUser(&user)
 }
 
-func Login(incoming User) (*string, error) {
-	user := DoFindUser(incoming.Username)
+func (s *Service) Login(incoming User) (*string, error) {
+	user := s.store.FindUser(incoming.Username)
 	if user != nil {
-		hashedPassword := user.Password
-		if bcrypt.CompareHashAndPassword([]byte(hashedPassword), []byte(incoming.Password)) == nil {
-			token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-				"username": user.Username,
-			})
-			signingString, err := token.SignedString([]byte(commons.Config.JwtSecret))
-			if err == nil {
+		if s.encrypt.Matches(incoming.Password, user.Password) {
+			signingString, err := s.jwt.SignedToken(user.Username)
+			if err == nil && s.jwt.SaveJwt(signingString) {
 				return &signingString, nil
 			}
-			log.Println(err.Error())
-			return nil, errors.New("could not create the token")
+			log.Println(err)
+			return nil, TokenCouldNotBeCreated
 		} else {
-			return nil, errors.New("password is incorrect")
+			return nil, IncorrectPassword
 		}
 	}
-	return nil, errors.New("user does not exist")
+	return nil, NotFound
 }
 
-func Verify(username string) bool {
-	return DoFindUser(username) != nil
+func (s *Service) Verify(username string) bool {
+	return s.store.FindUser(username) != nil
 }
 
-func GetUser(username string) (*Account, error) {
-	user := DoFindUser(username)
+func (s *Service) GetUser(username string) (*Account, error) {
+	user := s.store.FindUser(username)
 	if user != nil {
 		if user.Username == username {
-			tags := GetUserTags(username)
+			tags := s.GetUserTags(username)
 			return &Account{
 				Username: user.Username,
 				Email:    user.Email,
@@ -77,11 +62,11 @@ func GetUser(username string) (*Account, error) {
 	return nil, errors.New("user not found for username " + username)
 }
 
-func GetUserTags(username string) []tag.Tag {
+func (s *Service) GetUserTags(username string) []tag.Tag {
 	log.Printf("User[%s] tags have been requested\n", username)
 	var tagList []tag.Tag
-	for _, id := range DoGetUserTags(username) {
-		aTag := tag.GetTagById(id)
+	for _, id := range s.tags.GetUserTags(username) {
+		aTag := s.tags.GetTagById(id)
 		if aTag != nil {
 			tagList = append(tagList, *aTag)
 		}
@@ -89,12 +74,16 @@ func GetUserTags(username string) []tag.Tag {
 	return tagList
 }
 
-func AddTagsForUser(username string, newTagIds []string) bool {
+func (s *Service) AddTagsForUser(username string, newTagIds []string) bool {
 	log.Printf("Add tags[%s] for user[%s]\n", newTagIds, username)
-	return DoAddTagsForUser(username, newTagIds)
+	return s.tags.AddTagsForUser(username, newTagIds)
 }
 
-func RemoveTagsFromUser(username string, tagIdsToRemove []string) bool {
+func (s *Service) RemoveTagsFromUser(username string, tagIdsToRemove []string) bool {
 	log.Printf("Remove tags[%s] for user[%s]\n", tagIdsToRemove, username)
-	return DoRemoveTagsFromUser(username, tagIdsToRemove)
+	return s.tags.RemoveTagsFromUser(username, tagIdsToRemove)
+}
+
+func (s *Service) DeleteToken(token string) bool {
+	return s.jwt.DeleteJwt(token)
 }
