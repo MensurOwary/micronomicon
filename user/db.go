@@ -7,7 +7,7 @@ import (
 	"log"
 )
 
-func (r *repository) SaveUser(user *User) bool {
+func (r *repository) SaveUser(user User) bool {
 	return r.databaseAccess.withUsersDb(func(collection *mongo.Collection) interface{} {
 		result, err := collection.InsertOne(
 			context.Background(),
@@ -27,7 +27,9 @@ func (r *repository) SaveUser(user *User) bool {
 	}).(bool)
 }
 
-func (r *repository) FindUser(username string) *User {
+var DoesNotExist = User{}
+
+func (r *repository) FindUser(username string) User {
 	return r.databaseAccess.withUsersDb(func(collection *mongo.Collection) interface{} {
 		cursor := collection.FindOne(
 			context.Background(),
@@ -37,10 +39,10 @@ func (r *repository) FindUser(username string) *User {
 		err := cursor.Decode(&user)
 		if err != nil {
 			log.Printf("Error occurred during retrieval of %s - %s", username, err)
-			return nil
+			return DoesNotExist
 		}
-		return &user
-	}).(*User)
+		return user
+	}).(User)
 }
 
 func field(username string) bson.D {

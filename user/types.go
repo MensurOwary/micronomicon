@@ -60,6 +60,6 @@ func NewService(config ServiceConfig) *Service {
 }
 
 type Repository interface {
-	SaveUser(user *User) bool
-	FindUser(username string) *User
+	SaveUser(user User) bool
+	FindUser(username string) User
 }

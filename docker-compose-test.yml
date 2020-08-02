@@ -1,0 +1,17 @@
+version: '3.0'
+services:
+  unit:
+    image: golang:1.14
+    build: .
+    volumes:
+      - .:/usr/src/app
+      - /tmp/go:/go
+    working_dir: /usr/src/app
+    command: bash -c "go get -d -v && go test --cover -v ./... && go build -v -o micron_tests"
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_CONNECTION_STRING=mongodb://localhost:27017
+      - DATABASE_CONNECTION_USERNAME=root
+      - DATABASE_CONNECTION_PASSWORD=root
+      - JWT_SECRET=MlkMIlRWTcmkqCKKz9gyriGQM7

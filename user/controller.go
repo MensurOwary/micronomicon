@@ -13,6 +13,18 @@ type AuthResponse struct {
 	AccessToken string `json:"access_token"`
 }
 
+var (
+	InvalidUsername = errors.New("username is invalid")
+	InvalidEmail    = errors.New("email is invalid")
+	InvalidName     = errors.New("name is invalid")
+	InvalidPassword = errors.New("password is invalid")
+
+	TagsAddedSuccessfully   = model.Response("Successfully added the tags")
+	NewTagsCouldNotBeAdded  = model.Response("Could not add the new tag(s)")
+	TagsRemovedSuccessfully = model.Response("Successfully removed the tags")
+	TagsCouldNotBeRemoved   = model.Response("Could not remove the tag(s)")
+)
+
 func HandleUserRegistration(c *gin.Context, service *Service) {
 	createdUser := User{}
 	_ = c.BindJSON(&createdUser)
@@ -20,33 +32,32 @@ func HandleUserRegistration(c *gin.Context, service *Service) {
 	err := createdUser.validateRegister()
 
 	if err != nil {
-		c.JSON(400, model.DefaultResponse{
-			Message: err.Error(),
-		})
+		c.JSON(400, model.Response(err.Error()))
+		c.Abort()
 	}
 
-	service.Register(createdUser)
-
-	c.JSON(201, model.DefaultResponse{
-		Message: "Created the user",
-	})
+	if service.Register(createdUser) == CouldNotEncryptPassword {
+		c.JSON(422, model.Response("Could not process the request"))
+	} else {
+		c.JSON(201, model.Response("Created the user"))
+	}
 }
 
 func (user *User) validateRegister() error {
 	if strings.TrimSpace(user.Username) == "" {
-		return errors.New("username is invalid")
+		return InvalidUsername
 	}
 
 	if strings.TrimSpace(user.Email) == "" {
-		return errors.New("email is invalid")
+		return InvalidEmail
 	}
 
 	if strings.TrimSpace(user.Name) == "" {
-		return errors.New("name is invalid")
+		return InvalidName
 	}
 
 	if strings.TrimSpace(user.Password) == "" {
-		return errors.New("password is invalid")
+		return InvalidPassword
 	}
 	return nil
 }
@@ -58,28 +69,19 @@ func HandleUserAuthorization(c *gin.Context, service *Service) {
 	err := createdUser.validateLogin()
 
 	if err != nil {
-		c.JSON(400, model.DefaultResponse{
-			Message: err.Error(),
-		})
+		c.JSON(400, model.Response(err.Error()))
 		c.Abort()
 	}
 
 	token, err := service.Login(createdUser)
 	if err != nil {
-		c.JSON(401, model.DefaultResponse{
-			Message: err.Error(),
-		})
+		c.JSON(401, model.Response(err.Error()))
 	} else {
 		c.JSON(200, AuthResponse{
-			AccessToken: *token,
+			AccessToken: token,
 		})
 	}
 }
-
-var (
-	InvalidUsername = errors.New("username is invalid")
-	InvalidPassword = errors.New("password is invalid")
-)
 
 func (user *User) validateLogin() error {
 	if strings.TrimSpace(user.Username) == "" {
@@ -97,9 +99,7 @@ func HandleUserLogout(c *gin.Context, service *Service) {
 	if !service.DeleteToken(token) {
 		log.Println("Could not delete token successfully")
 	}
-	c.JSON(200, model.DefaultResponse{
-		Message: "Successfully logged out",
-	})
+	c.JSON(200, model.Response("Successfully logged out"))
 }
 
 func HandleUserByTokenRetrieval(c *gin.Context, service *Service) {
@@ -108,7 +108,7 @@ func HandleUserByTokenRetrieval(c *gin.Context, service *Service) {
 		if err != nil {
 			c.JSON(404, err)
 		} else {
-			c.JSON(200, *retrievedUser)
+			c.JSON(200, retrievedUser)
 		}
 	})
 }
@@ -119,13 +119,6 @@ func HandleUserTagsRetrieval(c *gin.Context, service *Service) {
 		c.JSON(200, tags)
 	})
 }
-
-var (
-	TagsAddedSuccessfully   = model.DefaultResponse{Message: "Successfully added the tags"}
-	NewTagsCouldNotBeAdded  = model.DefaultResponse{Message: "Could not add the new tag(s)"}
-	TagsRemovedSuccessfully = model.DefaultResponse{Message: "Successfully removed the tags"}
-	TagsCouldNotBeRemoved   = model.DefaultResponse{Message: "Could not remove the tag(s)"}
-)
 
 func HandleUserTagsAddition(c *gin.Context, service *Service) {
 	commons.WithUsername(c, func(username string) {

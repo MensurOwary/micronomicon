@@ -14,7 +14,7 @@ type Micron struct {
 }
 
 type Service interface {
-	GetARandomMicronForTag(tag tag.Tag) *Micron
+	GetARandomMicronForTag(tag tag.Tag) Micron
 }
 
 type service struct {
@@ -27,18 +27,20 @@ func NewService(scraper scraper.Scraper) Service {
 	}
 }
 
-func (s *service) GetARandomMicronForTag(tag tag.Tag) *Micron {
+var EmptyMicron = Micron{}
+
+func (s *service) GetARandomMicronForTag(tag tag.Tag) Micron {
 	rows := s.microns.Database()[tag.Name]
 
-	if rows != nil {
-		chosen := rand.Intn(len(rows))
-		row := &rows[chosen]
-		return &Micron{
-			Url:   row.Link,
-			Title: row.Title,
-			tag:   tag,
-		}
+	if rows == nil {
+		return EmptyMicron
 	}
 
-	return nil
+	chosen := rand.Intn(len(rows))
+	row := &rows[chosen]
+	return Micron{
+		Url:   row.Link,
+		Title: row.Title,
+		tag:   tag,
+	}
 }

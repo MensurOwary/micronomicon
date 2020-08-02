@@ -15,3 +15,5 @@
 # vendor/
 
 .idea
+
+micron_tests
