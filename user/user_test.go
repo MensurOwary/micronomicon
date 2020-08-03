@@ -3,6 +3,7 @@ package user
 import (
 	"errors"
 	"github.com/stretchr/testify/assert"
+	"micron/commons"
 	"micron/tag"
 	"testing"
 )
@@ -55,7 +56,7 @@ func TestService_Register(t *testing.T) {
 		err := service.Register(user)
 
 		assert.NotNil(t, err, "The result should error")
-		assert.Equal(t, CouldNotEncryptPassword, err, "Should not be able to encrypt the password")
+		assert.Equal(t, ErrCouldNotEncryptPassword, err, "Should not be able to encrypt the password")
 	})
 }
 
@@ -77,7 +78,7 @@ func TestService_Login(t *testing.T) {
 			encrypt:       mockEncrypt{},
 			jwt:           mockJwt{},
 			tokenExpected: EmptyToken,
-			errorExpected: NotFound,
+			errorExpected: ErrNotFound,
 		},
 		{
 			testName: "Password does not match",
@@ -89,7 +90,7 @@ func TestService_Login(t *testing.T) {
 			},
 			jwt:           mockJwt{},
 			tokenExpected: EmptyToken,
-			errorExpected: IncorrectPassword,
+			errorExpected: ErrIncorrectPassword,
 		},
 		{
 			testName: "Token could not be created",
@@ -104,7 +105,7 @@ func TestService_Login(t *testing.T) {
 				err:   errors.New("some error"),
 			},
 			tokenExpected: EmptyToken,
-			errorExpected: TokenCouldNotBeCreated,
+			errorExpected: ErrTokenCouldNotBeCreated,
 		},
 		{
 			testName: "Successfully gets the token",
@@ -219,11 +220,11 @@ func TestService_the_rest(t *testing.T) {
 		assert.False(t, resultFalse)
 	})
 
-	t.Run("DeleteToken", func(t *testing.T) {
+	t.Run("Logout", func(t *testing.T) {
 		service := getServiceWithTags(mockStore{})
 
-		resultTrue := service.DeleteToken("will-return-true")
-		resultFalse := service.DeleteToken("will-return-false")
+		resultTrue := service.Logout("will-return-true")
+		resultFalse := service.Logout("will-return-false")
 
 		assert.True(t, resultTrue)
 		assert.False(t, resultFalse)
@@ -299,6 +300,10 @@ func (j *mockJwt) DeleteJwt(token string) bool {
 	return token == "will-return-true"
 }
 
+func (j *mockJwt) ParseJwt(rawJwt string) *commons.ParsedJwtResult {
+	return nil
+}
+
 type mockTags struct {
 }
 
@@ -313,7 +318,7 @@ func (t mockTags) GetUserTags(username string) []string {
 		"react", "python",
 	}
 }
-func (t mockTags) GetTagById(name string) tag.Tag {
+func (t mockTags) GetTagByID(name string) tag.Tag {
 	if name == "react" {
 		return tag.Tag{
 			Name: "react",

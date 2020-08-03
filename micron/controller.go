@@ -5,26 +5,34 @@ import (
 	"math/rand"
 	"micron/commons"
 	"micron/model"
-	"micron/user"
+	"micron/tag"
+	"net/http"
 )
 
-func HandleMicronRetrieval(c *gin.Context, s Service, user *user.Service) {
+type service interface {
+	GetARandomMicronForTag(tag tag.Tag) Micron
+}
+
+type userService interface {
+	GetUserTags(username string) []tag.Tag
+}
+
+func HandleMicronRetrieval(c *gin.Context, s service, user userService) {
 	commons.WithUsername(c, func(username string) {
 		micron := getRandomMicron(username, s, user)
-		if micron != EmptyMicron {
-			c.JSON(200, micron)
+		if micron == EmptyMicron {
+			c.JSON(http.StatusNotFound, model.Response("Could not find a micron"))
 		} else {
-			c.JSON(404, model.Response("Could not find a micron"))
+			c.JSON(http.StatusOK, micron)
 		}
 	})
 }
 
-func getRandomMicron(username string, s Service, user *user.Service) Micron {
+func getRandomMicron(username string, s service, user userService) Micron {
 	tags := user.GetUserTags(username)
 	if len(tags) > 0 {
 		chosen := rand.Intn(len(tags))
 		return s.GetARandomMicronForTag(tags[chosen])
-	} else {
-		return EmptyMicron
 	}
+	return EmptyMicron
 }

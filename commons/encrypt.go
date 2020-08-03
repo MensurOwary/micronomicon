@@ -8,6 +8,7 @@ import (
 
 type encryptService struct{}
 
+// Deals with encryption concerns of the application
 type EncryptService interface {
 	Encrypt(input string) (string, error)
 	Matches(incoming, existing string) bool
@@ -17,16 +18,17 @@ func NewEncryptService() EncryptService {
 	return &encryptService{}
 }
 
+// Possible errors and default values
 var (
-	CouldNotBeHashed = errors.New("could not hash the user password")
-	EmptyInput       = ""
+	ErrCouldNotBeHashed = errors.New("could not hash the user password") // When the password could not be hashed
+	EmptyInput          = ""                                             // No hashed password
 )
 
 func (e *encryptService) Encrypt(input string) (string, error) {
-	hashedBytes, err := bcrypt.GenerateFromPassword([]byte(input), 14)
+	hashedBytes, err := bcrypt.GenerateFromPassword([]byte(input), Config.EncryptionCost)
 	if err != nil {
 		log.Printf("Error occurred while hashing the input (%s): %s", input, err)
-		return EmptyInput, CouldNotBeHashed
+		return EmptyInput, ErrCouldNotBeHashed
 	}
 	return string(hashedBytes), nil
 }

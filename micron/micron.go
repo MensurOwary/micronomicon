@@ -6,30 +6,31 @@ import (
 	"micron/tag"
 )
 
+// Represents a micron - a resource
 type Micron struct {
 	id    string
-	Url   string
+	URL   string
 	Title string
 	tag   tag.Tag
 }
 
-type Service interface {
-	GetARandomMicronForTag(tag tag.Tag) Micron
-}
-
-type service struct {
+// Deals with Micron related interactions
+type Service struct {
 	microns scraper.Scraper
 }
 
-func NewService(scraper scraper.Scraper) Service {
-	return &service{
+// Creates a new instance of micron service
+func NewService(scraper scraper.Scraper) *Service {
+	return &Service{
 		microns: scraper,
 	}
 }
 
+// Represents a non-existent resource
 var EmptyMicron = Micron{}
 
-func (s *service) GetARandomMicronForTag(tag tag.Tag) Micron {
+// Fetches a random micron given the tag
+func (s *Service) GetARandomMicronForTag(tag tag.Tag) Micron {
 	rows := s.microns.Database()[tag.Name]
 
 	if rows == nil {
@@ -39,7 +40,7 @@ func (s *service) GetARandomMicronForTag(tag tag.Tag) Micron {
 	chosen := rand.Intn(len(rows))
 	row := &rows[chosen]
 	return Micron{
-		Url:   row.Link,
+		URL:   row.Link,
 		Title: row.Title,
 		tag:   tag,
 	}

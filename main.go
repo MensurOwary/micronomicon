@@ -39,7 +39,7 @@ func main() {
 	serve(userService, micronService, jwtService, tagRepository)
 }
 
-func serve(userService *user.Service, micronService micron.Service, jwtService commons.JwtService, tagRepository *tag.Repository) {
+func serve(userService *user.Service, micronService *micron.Service, jwtService *commons.JwtService, tagRepository *tag.Repository) {
 	router := gin.Default()
 
 	registration(router, userService)
@@ -85,7 +85,7 @@ func login(router *gin.Engine, userService *user.Service) {
 	}
 }
 
-func users(router *gin.Engine, userService *user.Service, micronService micron.Service, jwtService commons.JwtService) {
+func users(router *gin.Engine, userService *user.Service, micronService *micron.Service, jwtService *commons.JwtService) {
 	users := router.Group("/users/")
 
 	users.Use(middleware.Authorizer(userService, jwtService))
@@ -99,7 +99,7 @@ func users(router *gin.Engine, userService *user.Service, micronService micron.S
 	}
 }
 
-func tags(router *gin.Engine, service *tag.Repository, userService *user.Service, jwtService commons.JwtService) gin.IRoutes {
+func tags(router *gin.Engine, service *tag.Repository, userService *user.Service, jwtService *commons.JwtService) gin.IRoutes {
 	return router.GET("/tags", middleware.Authorizer(userService, jwtService), func(c *gin.Context) {
 		tag.HandleTagsRetrieval(c, service)
 	})

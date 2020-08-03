@@ -9,22 +9,23 @@ import (
 	"strings"
 )
 
-type Callable func(username string)
+type callable func(username string)
 
-func WithUsername(c *gin.Context, callable Callable) {
+// Extracts the username from the context and
+// passes it to the provided callable function
+func WithUsername(c *gin.Context, callable callable) {
 	username, ok := c.Keys["username"].(string)
 	if ok {
 		callable(username)
 	} else {
-		c.JSON(400, model.DefaultResponse{
-			Message: "username was not found",
-		})
+		c.JSON(http.StatusBadRequest, model.Response("username was not found"))
 	}
 }
 
+// Extracts the Bearer token from the Authorization header
 func ExtractToken(header http.Header) string {
 	headerToken := header.Get("Authorization")
-	if strings.Index(headerToken, "Bearer ") == 0 {
+	if strings.Index(headerToken, "Bearer ") == 0 && len(headerToken) > 7 {
 		headerToken = strings.ReplaceAll(headerToken, "Bearer ", "")
 		headerToken = strings.TrimSpace(headerToken)
 		return headerToken
@@ -32,6 +33,7 @@ func ExtractToken(header http.Header) string {
 	return ""
 }
 
+// Union of two string arrays
 func Union(a []string, b []string) []string {
 	memo := make(map[string]int)
 	c := append(a, b...)
@@ -39,12 +41,13 @@ func Union(a []string, b []string) []string {
 		memo[e] = 1
 	}
 	z := make([]string, 0)
-	for k, _ := range memo {
+	for k := range memo {
 		z = append(z, k)
 	}
 	return z
 }
 
+// Difference of two string arrays
 func Difference(a []string, b []string) []string {
 	memo := make(map[string]int)
 	for _, e := range a {
@@ -62,6 +65,8 @@ func Difference(a []string, b []string) []string {
 	return z
 }
 
+// Gets the environment variable
+// panics when the value is not present or is empty
 func GetEnv(key string) string {
 	value := os.Getenv(key)
 	if value == "" {

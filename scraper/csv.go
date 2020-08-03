@@ -6,6 +6,7 @@ import (
 	"regexp"
 )
 
+// Represents a row in a CSV file
 type Row struct {
 	Title string `csv:"title"`
 	Link  string `csv:"link"`

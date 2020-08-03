@@ -8,20 +8,22 @@ import (
 	"strings"
 )
 
-type ExtractLink func(baseUrl string, e *colly.HTMLElement) string
-type ExtractTitle func(e *colly.HTMLElement) string
-type ExtractFields func(title string) string
+type extractLink func(baseUrl string, e *colly.HTMLElement) string
+type extractTitle func(e *colly.HTMLElement) string
+type extractFields func(title string) string
 
+// Represents the scraped endpoint
 type Scraped struct {
-	BaseUrl       string
-	VisitUrl      string
+	BaseURL       string
+	VisitURL      string
 	FileName      string
 	Selector      string
-	ExtractLink   ExtractLink
-	ExtractTitle  ExtractTitle
-	ExtractFields ExtractFields
+	ExtractLink   extractLink
+	ExtractTitle  extractTitle
+	ExtractFields extractFields
 }
 
+// Scrapes the given resource (Scraped)
 func (scraped Scraped) Scrape() {
 	handle, err := os.Create(scraped.FileName)
 
@@ -37,12 +39,12 @@ func (scraped Scraped) Scrape() {
 
 		_, _ = fmt.Fprintf(handle, "%s,%s,%s\n", title, link, joinedFields)
 	})
-	_ = collector.Visit(scraped.VisitUrl)
+	_ = collector.Visit(scraped.VisitURL)
 }
 
 func doScrape(e *colly.HTMLElement, scraped Scraped) (string, string, string) {
 	title := scraped.ExtractTitle(e)
-	link := scraped.ExtractLink(scraped.BaseUrl, e)
+	link := scraped.ExtractLink(scraped.BaseURL, e)
 	joinedFields := scraped.ExtractFields(title)
 	return title, link, joinedFields
 }
@@ -50,16 +52,16 @@ func doScrape(e *colly.HTMLElement, scraped Scraped) (string, string, string) {
 func handleStopWords(fields []string) []string {
 	var tags []string
 	for _, field := range fields {
-		if !IsStopWord(field) {
+		if !isStopWord(field) {
 			tags = append(tags, strings.ToLower(field))
 		}
 	}
 	return tags
 }
 
-var compile = regexp.MustCompile(`^[0-9-.,\s]+`)
+var nonText = regexp.MustCompile(`^[0-9-.,\s]+`)
 
-func handleTitle(text string) string{
-	text = compile.ReplaceAllString(text, "")
+func handleTitle(text string) string {
+	text = nonText.ReplaceAllString(text, "")
 	return strings.TrimSpace(strings.ReplaceAll(text, ",", ""))
 }

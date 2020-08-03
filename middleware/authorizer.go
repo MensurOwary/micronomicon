@@ -2,7 +2,6 @@ package middleware
 
 import (
 	"errors"
-	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"log"
 	"micron/commons"
@@ -10,68 +9,46 @@ import (
 	"net/http"
 )
 
-type UserService interface {
+type userService interface {
 	Verify(username string) bool
 }
 
-type JwtService interface {
-	DoesJwtExist(jwt string) bool
+type jwtService interface {
+	ParseJwt(rawJwt string) (*commons.ParsedJwtResult, error)
 }
 
-func Authorizer(userService UserService, jwtService JwtService) gin.HandlerFunc {
+var EmptyToken = ""
+
+// middleware that deals with bearer token authorizations
+func Authorizer(userService userService, jwtService jwtService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		accessToken := extractToken(c)
-		if accessToken == "" {
-			abort(c, http.StatusBadRequest, "Authorization Header is Missing")
+		if accessToken == EmptyToken {
+			abort(c, http.StatusBadRequest, "Authorization header is missing or empty")
 		} else {
-			parsedToken, err := parseToken(accessToken)
+			parseJwt, err := jwtService.ParseJwt(accessToken)
+
 			if err != nil {
 				abort(c, http.StatusBadRequest, err.Error())
-			} else {
-				if claims, ok := parsedToken.Claims.(jwt.MapClaims); ok && parsedToken.Valid {
-					if verifyToken(c, jwtService, parsedToken.Raw) {
-						userVerification(c, claims, userService)
-					}
-				} else {
-					abort(c, http.StatusBadRequest, "Token is invalid")
-				}
+			} else if err := userVerification(c, parseJwt, userService); err != nil {
+				abort(c, http.StatusUnauthorized, "Unauthorized")
 			}
 		}
 	}
 }
 
-func userVerification(c *gin.Context, claims jwt.MapClaims, userService UserService) {
-	if username, ok := claims["username"]; ok && userService.Verify(username.(string)) {
-		log.Printf("User [%s] successfully requested the resource\n", username.(string))
-		c.Set("username", username)
-	} else {
-		abort(c, http.StatusUnauthorized, "Unauthorized")
+func userVerification(c *gin.Context, parsed *commons.ParsedJwtResult, userService userService) error {
+	if userService.Verify(parsed.Username) == false {
+		return errors.New("unauthorized")
 	}
-}
-
-func verifyToken(c *gin.Context, jwtService JwtService, token string) bool {
-	if !jwtService.DoesJwtExist(token) {
-		abort(c, http.StatusUnauthorized, "Token expired")
-		return false
-	}
-	return true
+	log.Printf("User [%s] successfully requested the resource\n", parsed.Username)
+	c.Set("username", parsed.Username)
+	return nil
 }
 
 func abort(c *gin.Context, status int, message string) {
-	c.JSON(status, model.DefaultResponse{
-		Message: message,
-	})
+	c.JSON(status, model.Response(message))
 	c.Abort()
-}
-
-func parseToken(header string) (*jwt.Token, error) {
-	parsedToken, err := jwt.Parse(header, func(token *jwt.Token) (interface{}, error) {
-		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-			return nil, errors.New("jwt error: signing method is wrong")
-		}
-		return []byte(commons.Config.JwtSecret), nil
-	})
-	return parsedToken, err
 }
 
 func extractToken(c *gin.Context) string {

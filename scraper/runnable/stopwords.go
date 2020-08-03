@@ -340,7 +340,7 @@ func containsPunctuation(input string) bool {
 	return punctuationPattern.MatchString(input)
 }
 
-func IsStopWord(input string) bool {
+func isStopWord(input string) bool {
 	_, ok := english[input]
 	return ok || onlyNumbers(input) || containsPunctuation(input)
 }

@@ -12,7 +12,7 @@ func TestTagsService_GetTagById(t *testing.T) {
 			rows: getCaseMany(),
 		}))
 
-		tag := service.GetTagById("react")
+		tag := service.GetTagByID("react")
 
 		assert.Equal(t, Tag{
 			Name: "react",
@@ -24,7 +24,7 @@ func TestTagsService_GetTagById(t *testing.T) {
 			rows: getCaseNone(),
 		}))
 
-		tag := service.GetTagById("react")
+		tag := service.GetTagByID("react")
 
 		assert.Equal(t, EmptyTag, tag)
 	})

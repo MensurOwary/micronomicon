@@ -27,6 +27,7 @@ func (r *repository) SaveUser(user User) bool {
 	}).(bool)
 }
 
+// Represents a non-existent resource
 var DoesNotExist = User{}
 
 func (r *repository) FindUser(username string) User {

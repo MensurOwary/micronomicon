@@ -9,7 +9,7 @@ import (
 	"micron/commons"
 )
 
-func (t *tagsService) AddTagsForUser(username string, newTagIds []string) bool {
+func (t *TagsService) AddTagsForUser(username string, newTagIds []string) bool {
 	return t.withUsersDb(func(collection *mongo.Collection) interface{} {
 		currentUserTags := t.GetUserTags(username)
 		union := commons.Union(currentUserTags, newTagIds)
@@ -17,7 +17,7 @@ func (t *tagsService) AddTagsForUser(username string, newTagIds []string) bool {
 	}).(bool)
 }
 
-func (t *tagsService) RemoveTagsFromUser(username string, removable []string) bool {
+func (t *TagsService) RemoveTagsFromUser(username string, removable []string) bool {
 	return t.withUsersDb(func(collection *mongo.Collection) interface{} {
 		currentUserTags := t.GetUserTags(username)
 		diff := commons.Difference(currentUserTags, removable)
@@ -25,7 +25,7 @@ func (t *tagsService) RemoveTagsFromUser(username string, removable []string) bo
 	}).(bool)
 }
 
-func (t *tagsService) doUpdateTagsField(collection *mongo.Collection, username string, tags []string) bool {
+func (t *TagsService) doUpdateTagsField(collection *mongo.Collection, username string, tags []string) bool {
 	updateResult, err := collection.UpdateOne(
 		context.Background(),
 		field(username),
@@ -38,14 +38,13 @@ func (t *tagsService) doUpdateTagsField(collection *mongo.Collection, username s
 	)
 	if err != nil {
 		log.Printf("Error occurred during updating of %s - %s\n", username, err)
-		return false
 	} else {
 		log.Printf("Update successful - Result = %+v\n", updateResult)
-		return true
 	}
+	return err == nil
 }
 
-func (t *tagsService) GetUserTags(username string) []string {
+func (t *TagsService) GetUserTags(username string) []string {
 	return t.withUsersDb(func(collection *mongo.Collection) interface{} {
 		singleResult := collection.FindOne(context.Background(),
 			field(username),
@@ -67,7 +66,7 @@ func (t *tagsService) GetUserTags(username string) []string {
 
 type dbAction func(collection *mongo.Collection) interface{}
 
-func (t *tagsService) withUsersDb(action dbAction) interface{} {
+func (t *TagsService) withUsersDb(action dbAction) interface{} {
 	collection := t.db.Database("micron").Collection("users")
 	return action(collection)
 }

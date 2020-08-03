@@ -24,8 +24,8 @@ func Start(enabled bool) {
 
 func kotlin(wg *sync.WaitGroup) {
 	Scraped{
-		BaseUrl:  "https://kotlinlang.org",
-		VisitUrl: "https://kotlinlang.org/docs/reference/",
+		BaseURL:  "https://kotlinlang.org",
+		VisitURL: "https://kotlinlang.org/docs/reference/",
 		FileName: "./scraper/dataset/kotlin-docs.csv",
 		Selector: "a.tree-item-title",
 		ExtractLink: func(baseUrl string, e *colly.HTMLElement) string {
@@ -46,8 +46,8 @@ func kotlin(wg *sync.WaitGroup) {
 
 func react(wg *sync.WaitGroup) {
 	Scraped{
-		BaseUrl:  "https://reactjs.org",
-		VisitUrl: "https://reactjs.org/docs/getting-started.html",
+		BaseURL:  "https://reactjs.org",
+		VisitURL: "https://reactjs.org/docs/getting-started.html",
 		FileName: "./scraper/dataset/react-docs.csv",
 		Selector: "nav div ul li a[href]",
 		ExtractLink: func(baseUrl string, e *colly.HTMLElement) string {
@@ -68,8 +68,8 @@ func react(wg *sync.WaitGroup) {
 
 func springBoot(wg *sync.WaitGroup) {
 	Scraped{
-		BaseUrl:  "https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html",
-		VisitUrl: "https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html",
+		BaseURL:  "https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html",
+		VisitURL: "https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html",
 		FileName: "./scraper/dataset/spring-boot-docs.csv",
 		Selector: "#toc ul li a[href]",
 		ExtractLink: func(baseUrl string, e *colly.HTMLElement) string {
@@ -90,8 +90,8 @@ func springBoot(wg *sync.WaitGroup) {
 
 func learnXY(wg *sync.WaitGroup) {
 	Scraped{
-		BaseUrl:  "https://learnxinyminutes.com",
-		VisitUrl: "https://learnxinyminutes.com",
+		BaseURL:  "https://learnxinyminutes.com",
+		VisitURL: "https://learnxinyminutes.com",
 		FileName: "./scraper/dataset/learnxinyminutes.csv",
 		Selector: "td.name a[href]",
 		ExtractLink: func(baseUrl string, e *colly.HTMLElement) string {

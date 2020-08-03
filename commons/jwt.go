@@ -2,37 +2,98 @@ package commons
 
 import (
 	"context"
+	"errors"
 	"github.com/dgrijalva/jwt-go"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"log"
+	"time"
 )
 
-type JwtService interface {
-	SignedToken(username string) (string, error)
-	SaveJwt(jwt string) bool
-	DoesJwtExist(jwt string) bool
-	DeleteJwt(jwt string) bool
+type ParsedJwtResult struct {
+	Username    string
+	parsedToken *jwt.Token
+	err         error
 }
 
-type jwtService struct {
+func (p *ParsedJwtResult) isOk() bool {
+	return p.err == nil
+}
+
+func (p *ParsedJwtResult) IsJwtValid() error {
+	claims, ok := p.parsedToken.Claims.(jwt.MapClaims)
+
+	if !p.isOk() {
+		return errors.New("jwt error occurred : " + p.err.Error())
+	}
+
+	if !(ok && p.parsedToken.Valid) {
+		return errors.New("jwt error occurred : parsed token is invalid")
+	}
+
+	if username, usernameOk := claims["username"]; usernameOk {
+		p.Username = username.(string)
+		return nil
+	}
+
+	return errors.New("jwt error occurred : username is invalid")
+}
+
+// Deals with jwt related actions
+type JwtService struct {
 	db *mongo.Client
 }
 
-func NewJwtService(mongo *mongo.Client) JwtService {
-	return &jwtService{
+// Creates a new instance of the service
+func NewJwtService(mongo *mongo.Client) *JwtService {
+	return &JwtService{
 		db: mongo,
 	}
 }
 
-func (j *jwtService) SignedToken(username string) (string, error) {
+// Parses and Validates the given jwt token
+func (j *JwtService) ParseJwt(rawJwt string) (*ParsedJwtResult, error) {
+	parseJwt := j.doParseJwt(rawJwt)
+
+	if err := parseJwt.IsJwtValid(); err != nil {
+		return nil, err
+	}
+	return parseJwt, nil
+}
+
+func (j *JwtService) doParseJwt(rawJwt string) *ParsedJwtResult {
+	parsedToken, err := jwt.Parse(rawJwt, func(token *jwt.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, errors.New("jwt error: signing method is wrong")
+		}
+		return []byte(Config.JwtSecret), nil
+	})
+
+	if err == nil && !j.DoesJwtExist(rawJwt) {
+		return &ParsedJwtResult{
+			parsedToken: parsedToken,
+			err:         errors.New("token expired"),
+		}
+	}
+
+	return &ParsedJwtResult{
+		parsedToken: parsedToken,
+		err:         err,
+	}
+}
+
+// Creates a signed token
+func (j *JwtService) SignedToken(username string) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"username": username,
+		"exp":      time.Now().Add(Config.JwtTokenExpiresIn).Unix(),
+		"iat":      time.Now().Unix(),
 	})
 	return token.SignedString([]byte(Config.JwtSecret))
 }
 
-func (j *jwtService) SaveJwt(jwt string) bool {
+// Saves the token to the database
+func (j *JwtService) SaveJwt(jwt string) bool {
 	return j.withJwtDb(func(collection *mongo.Collection) interface{} {
 		insertOneResult, err := collection.InsertOne(context.Background(), bson.D{
 			{"jwt", jwt},
@@ -46,7 +107,8 @@ func (j *jwtService) SaveJwt(jwt string) bool {
 	}).(bool)
 }
 
-func (j *jwtService) DoesJwtExist(jwt string) bool {
+// Checks the existence of the token in the database
+func (j *JwtService) DoesJwtExist(jwt string) bool {
 	return j.withJwtDb(func(collection *mongo.Collection) interface{} {
 		findOne := collection.FindOne(context.Background(),
 			bson.D{
@@ -57,7 +119,8 @@ func (j *jwtService) DoesJwtExist(jwt string) bool {
 	}).(bool)
 }
 
-func (j *jwtService) DeleteJwt(jwt string) bool {
+// Deletes the Jwt token from the database, hence invalidating it
+func (j *JwtService) DeleteJwt(jwt string) bool {
 	return j.withJwtDb(func(collection *mongo.Collection) interface{} {
 		_, err := collection.DeleteOne(context.Background(), bson.D{
 			{"jwt", jwt},
@@ -72,7 +135,7 @@ func (j *jwtService) DeleteJwt(jwt string) bool {
 
 type dbAction func(collection *mongo.Collection) interface{}
 
-func (j *jwtService) withJwtDb(action dbAction) interface{} {
+func (j *JwtService) withJwtDb(action dbAction) interface{} {
 	collection := j.db.Database("micron").Collection("jwts")
 	return action(collection)
 }

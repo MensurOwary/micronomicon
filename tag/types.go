@@ -14,25 +14,17 @@ type Tags struct {
 	Size int   `json:"size"`
 }
 
-type Service interface {
-	AddTagsForUser(username string, newTagIds []string) bool
-	RemoveTagsFromUser(username string, removable []string) bool
-	GetUserTags(username string) []string
-	GetTagById(name string) Tag
-}
-
-type tagsService struct {
+type TagsService struct {
 	db    *mongo.Client
 	tagDb *Repository
 }
 
-func NewService(mongo *mongo.Client, repository *Repository) Service {
-	return &tagsService{
+func NewService(mongo *mongo.Client, repository *Repository) *TagsService {
+	return &TagsService{
 		db:    mongo,
 		tagDb: repository,
 	}
 }
-
 
 type Repository struct {
 	database scraper.Scraper
