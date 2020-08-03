@@ -12,7 +12,7 @@ type extractLink func(baseUrl string, e *colly.HTMLElement) string
 type extractTitle func(e *colly.HTMLElement) string
 type extractFields func(title string) string
 
-// Represents the scraped endpoint
+// Scraped represents the scraped endpoint
 type Scraped struct {
 	BaseURL       string
 	VisitURL      string
@@ -23,7 +23,7 @@ type Scraped struct {
 	ExtractFields extractFields
 }
 
-// Scrapes the given resource (Scraped)
+// Scrape method scrapes the given resource (Scraped)
 func (scraped Scraped) Scrape() {
 	handle, err := os.Create(scraped.FileName)
 

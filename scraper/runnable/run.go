@@ -9,6 +9,7 @@ import (
 	"sync"
 )
 
+// Start method starts the scraping process
 func Start(enabled bool) {
 	var wg sync.WaitGroup
 	wg.Add(4)

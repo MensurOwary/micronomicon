@@ -39,19 +39,19 @@ func (p *ParsedJwtResult) IsJwtValid() error {
 	return errors.New("jwt error occurred : username is invalid")
 }
 
-// Deals with jwt related actions
+// JwtService deals with jwt related actions
 type JwtService struct {
 	db *mongo.Client
 }
 
-// Creates a new instance of the service
+// NewJwtService creates a new instance of the service
 func NewJwtService(mongo *mongo.Client) *JwtService {
 	return &JwtService{
 		db: mongo,
 	}
 }
 
-// Parses and Validates the given jwt token
+// ParseJwt parses and validates the given jwt token
 func (j *JwtService) ParseJwt(rawJwt string) (*ParsedJwtResult, error) {
 	parseJwt := j.doParseJwt(rawJwt)
 
@@ -82,7 +82,7 @@ func (j *JwtService) doParseJwt(rawJwt string) *ParsedJwtResult {
 	}
 }
 
-// Creates a signed token
+// SignedToken creates a signed token
 func (j *JwtService) SignedToken(username string) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"username": username,
@@ -92,7 +92,7 @@ func (j *JwtService) SignedToken(username string) (string, error) {
 	return token.SignedString([]byte(Config.JwtSecret))
 }
 
-// Saves the token to the database
+// SaveJwt saves the token to the database
 func (j *JwtService) SaveJwt(jwt string) bool {
 	return j.withJwtDb(func(collection *mongo.Collection) interface{} {
 		insertOneResult, err := collection.InsertOne(context.Background(), bson.D{
@@ -107,7 +107,7 @@ func (j *JwtService) SaveJwt(jwt string) bool {
 	}).(bool)
 }
 
-// Checks the existence of the token in the database
+// DoesJwtExist checks the existence of the token in the database
 func (j *JwtService) DoesJwtExist(jwt string) bool {
 	return j.withJwtDb(func(collection *mongo.Collection) interface{} {
 		findOne := collection.FindOne(context.Background(),
@@ -119,7 +119,7 @@ func (j *JwtService) DoesJwtExist(jwt string) bool {
 	}).(bool)
 }
 
-// Deletes the Jwt token from the database, hence invalidating it
+// DeleteJwt deletes the jwt token from the database, hence invalidating it
 func (j *JwtService) DeleteJwt(jwt string) bool {
 	return j.withJwtDb(func(collection *mongo.Collection) interface{} {
 		_, err := collection.DeleteOne(context.Background(), bson.D{

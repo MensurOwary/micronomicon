@@ -17,6 +17,7 @@ type userService interface {
 	GetUserTags(username string) []tag.Tag
 }
 
+// HandleMicronRetrieval handles the retrieval of a micron
 func HandleMicronRetrieval(c *gin.Context, s service, user userService) {
 	commons.WithUsername(c, func(username string) {
 		micron := getRandomMicron(username, s, user)

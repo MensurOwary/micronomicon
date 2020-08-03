@@ -22,7 +22,6 @@ A Micron is a random resource on the given topics.
 | GET       | /users/me/microns | Get a micron for the user         |
 | GET       | /tags             | Get all the available tags        |
 
-
 ### Running tests
 
 To run all the test, issue the following command:

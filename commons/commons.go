@@ -1,6 +1,7 @@
 package commons
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"micron/model"
@@ -11,7 +12,7 @@ import (
 
 type callable func(username string)
 
-// Extracts the username from the context and
+// WithUsername extracts the username from the context and
 // passes it to the provided callable function
 func WithUsername(c *gin.Context, callable callable) {
 	username, ok := c.Keys["username"].(string)
@@ -22,7 +23,7 @@ func WithUsername(c *gin.Context, callable callable) {
 	}
 }
 
-// Extracts the Bearer token from the Authorization header
+// ExtractToken extracts the Bearer token from the Authorization header
 func ExtractToken(header http.Header) string {
 	headerToken := header.Get("Authorization")
 	if strings.Index(headerToken, "Bearer ") == 0 && len(headerToken) > 7 {
@@ -65,7 +66,7 @@ func Difference(a []string, b []string) []string {
 	return z
 }
 
-// Gets the environment variable
+// GetEnv gets the environment variable
 // panics when the value is not present or is empty
 func GetEnv(key string) string {
 	value := os.Getenv(key)
@@ -73,4 +74,13 @@ func GetEnv(key string) string {
 		panic(fmt.Sprintf("Missing the value for the environment variable [%s]", key))
 	}
 	return value
+}
+
+// ToJSON serializes the given object to a JSON string
+func ToJSON(obj interface{}) string {
+	marshal, err := json.Marshal(obj)
+	if err != nil {
+		panic("Could not serialize to json")
+	}
+	return string(marshal)
 }

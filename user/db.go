@@ -7,6 +7,7 @@ import (
 	"log"
 )
 
+// SaveUser saves the user to database
 func (r *repository) SaveUser(user User) bool {
 	return r.databaseAccess.withUsersDb(func(collection *mongo.Collection) interface{} {
 		result, err := collection.InsertOne(
@@ -27,9 +28,10 @@ func (r *repository) SaveUser(user User) bool {
 	}).(bool)
 }
 
-// Represents a non-existent resource
+// DoesNotExist represents a non-existent resource
 var DoesNotExist = User{}
 
+// FindUser finds the user from database based on the username
 func (r *repository) FindUser(username string) User {
 	return r.databaseAccess.withUsersDb(func(collection *mongo.Collection) interface{} {
 		cursor := collection.FindOne(

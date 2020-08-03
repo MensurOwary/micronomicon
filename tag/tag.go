@@ -1,6 +1,6 @@
 package tag
 
-// Fetches all the available tags
+// GetAvailableTags fetches all the available tags
 func (t *Repository) GetAvailableTags() Tags {
 	database := t.database.Database()
 	keys := make([]Tag, 0, len(database))
@@ -15,10 +15,10 @@ func (t *Repository) GetAvailableTags() Tags {
 	}
 }
 
-// Represents a non-existent resource
+// EmptyTag represents a non-existent resource
 var EmptyTag = Tag{}
 
-// Fetches the tag by its name/id
+// GetTagByID fetches the tag by its name/id
 func (t *TagsService) GetTagByID(name string) Tag {
 	for _, tag := range t.tagDb.GetAvailableTags().Tags {
 		if tag.Name == name {

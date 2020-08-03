@@ -17,19 +17,19 @@ var (
 	ErrInvalidPassword = errors.New("password is invalid")
 )
 
-// Represents a means that deals with authZ/N related actions
+// AuthService represents a means that deals with authZ/N related actions
 type AuthService interface {
 	Register(user User) error
 	Login(incoming User) (string, error)
 	Logout(token string) bool
 }
 
-// Represents authorization response
+// AuthResponse represents authorization response
 type AuthResponse struct {
 	AccessToken string `json:"access_token"`
 }
 
-// Deals with registering a user
+// HandleUserRegistration deals with registering a user
 func HandleUserRegistration(c *gin.Context, service AuthService) {
 	createdUser := User{}
 	_ = c.BindJSON(&createdUser)
@@ -67,7 +67,7 @@ func (user *User) validateRegister() error {
 	return nil
 }
 
-// Deals with authN/Z of the user
+// HandleUserAuthorization deals with authN/Z of the user
 func HandleUserAuthorization(c *gin.Context, service AuthService) {
 	createdUser := User{}
 	_ = c.BindJSON(&createdUser)
@@ -100,7 +100,7 @@ func (user *User) validateLogin() error {
 	return nil
 }
 
-// Deals with user logout
+// HandleUserLogout deals with user logout
 func HandleUserLogout(c *gin.Context, service AuthService) {
 	token := commons.ExtractToken(c.Request.Header)
 	if !service.Logout(token) {

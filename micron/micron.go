@@ -6,7 +6,7 @@ import (
 	"micron/tag"
 )
 
-// Represents a micron - a resource
+// Micron represents a micron - a resource
 type Micron struct {
 	id    string
 	URL   string
@@ -14,22 +14,22 @@ type Micron struct {
 	tag   tag.Tag
 }
 
-// Deals with Micron related interactions
+// Service deals with Micron related interactions
 type Service struct {
 	microns scraper.Scraper
 }
 
-// Creates a new instance of micron service
+// NewService creates a new instance of micron service
 func NewService(scraper scraper.Scraper) *Service {
 	return &Service{
 		microns: scraper,
 	}
 }
 
-// Represents a non-existent resource
+// EmptyMicron represents a non-existent resource
 var EmptyMicron = Micron{}
 
-// Fetches a random micron given the tag
+// GetARandomMicronForTag fetches a random micron given the tag
 func (s *Service) GetARandomMicronForTag(tag tag.Tag) Micron {
 	rows := s.microns.Database()[tag.Name]
 

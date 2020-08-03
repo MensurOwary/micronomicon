@@ -2,7 +2,7 @@ package commons
 
 import "time"
 
-// Configuration for some parts of the application
+// Config for some parts of the application
 var Config = struct {
 	JwtSecret         string
 	JwtTokenExpiresIn time.Duration

@@ -9,6 +9,7 @@ import (
 	"micron/commons"
 )
 
+// AddTagsForUser handles adding new tags for user
 func (t *TagsService) AddTagsForUser(username string, newTagIds []string) bool {
 	return t.withUsersDb(func(collection *mongo.Collection) interface{} {
 		currentUserTags := t.GetUserTags(username)
@@ -17,6 +18,7 @@ func (t *TagsService) AddTagsForUser(username string, newTagIds []string) bool {
 	}).(bool)
 }
 
+// RemoveTagsFromUser handles removing tags from user
 func (t *TagsService) RemoveTagsFromUser(username string, removable []string) bool {
 	return t.withUsersDb(func(collection *mongo.Collection) interface{} {
 		currentUserTags := t.GetUserTags(username)
@@ -44,6 +46,7 @@ func (t *TagsService) doUpdateTagsField(collection *mongo.Collection, username s
 	return err == nil
 }
 
+// GetUserTags fetches the user tags
 func (t *TagsService) GetUserTags(username string) []string {
 	return t.withUsersDb(func(collection *mongo.Collection) interface{} {
 		singleResult := collection.FindOne(context.Background(),

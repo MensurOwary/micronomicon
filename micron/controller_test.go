@@ -1,9 +1,9 @@
 package micron
 
 import (
-	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
+	"micron/commons"
 	"micron/model"
 	"micron/tag"
 	"net/http"
@@ -19,7 +19,7 @@ func TestHandleMicronRetrieval(t *testing.T) {
 		HandleMicronRetrieval(c, service, service)
 
 		assert.Equal(t, http.StatusNotFound, recorder.Code)
-		assert.Equal(t, toJson(model.Response("Could not find a micron")), recorder.Body.String())
+		assert.Equal(t, commons.ToJSON(model.Response("Could not find a micron")), recorder.Body.String())
 	})
 
 	t.Run("Successfully gets a micron", func(t *testing.T) {
@@ -33,7 +33,7 @@ func TestHandleMicronRetrieval(t *testing.T) {
 		HandleMicronRetrieval(c, service, service)
 
 		assert.Equal(t, http.StatusOK, recorder.Code)
-		assert.Equal(t, toJson(Micron{
+		assert.Equal(t, commons.ToJSON(Micron{
 			URL:   "www.hello.com",
 			Title: "how to handle stuff",
 		}), recorder.Body.String())
@@ -46,7 +46,7 @@ func TestHandleMicronRetrieval(t *testing.T) {
 		HandleMicronRetrieval(c, service, service)
 
 		assert.Equal(t, http.StatusBadRequest, recorder.Code)
-		assert.Equal(t, toJson(model.Response("username was not found")), recorder.Body.String())
+		assert.Equal(t, commons.ToJSON(model.Response("username was not found")), recorder.Body.String())
 	})
 }
 
@@ -78,12 +78,4 @@ func (m *mockService) GetARandomMicronForTag(tag tag.Tag) Micron {
 }
 func (m *mockService) GetUserTags(_ string) []tag.Tag {
 	return m.tags
-}
-
-func toJson(obj interface{}) string {
-	marshal, err := json.Marshal(obj)
-	if err != nil {
-		panic("Could not serialize to json")
-	}
-	return string(marshal)
 }

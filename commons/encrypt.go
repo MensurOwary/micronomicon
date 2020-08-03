@@ -8,12 +8,13 @@ import (
 
 type encryptService struct{}
 
-// Deals with encryption concerns of the application
+// EncryptService deals with encryption concerns of the application
 type EncryptService interface {
 	Encrypt(input string) (string, error)
 	Matches(incoming, existing string) bool
 }
 
+// NewEncryptService initializes EncryptService
 func NewEncryptService() EncryptService {
 	return &encryptService{}
 }
@@ -24,6 +25,7 @@ var (
 	EmptyInput          = ""                                             // No hashed password
 )
 
+// Encrypt encrypts the given input string
 func (e *encryptService) Encrypt(input string) (string, error) {
 	hashedBytes, err := bcrypt.GenerateFromPassword([]byte(input), Config.EncryptionCost)
 	if err != nil {
@@ -33,6 +35,8 @@ func (e *encryptService) Encrypt(input string) (string, error) {
 	return string(hashedBytes), nil
 }
 
+// Matches checks if two given strings match where the former being the actual password,
+// and the latter being the hashed one
 func (e *encryptService) Matches(incoming, existing string) bool {
 	return bcrypt.CompareHashAndPassword([]byte(existing), []byte(incoming)) == nil
 }

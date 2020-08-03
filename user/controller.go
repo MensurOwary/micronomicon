@@ -26,7 +26,7 @@ type tagsInteractionService interface {
 	RemoveTagsFromUser(username string, tagIdsToRemove []string) bool
 }
 
-// Deals with getting the user related data based on the bearer token
+// HandleUserByTokenRetrieval deals with getting the user related data based on the bearer token
 func HandleUserByTokenRetrieval(c *gin.Context, service usersInteractionService) {
 	commons.WithUsername(c, func(username string) {
 		retrievedUser, err := service.GetUser(username)
@@ -38,7 +38,7 @@ func HandleUserByTokenRetrieval(c *gin.Context, service usersInteractionService)
 	})
 }
 
-// Deals with getting the user tags
+// HandleUserTagsRetrieval deals with getting the user tags
 func HandleUserTagsRetrieval(c *gin.Context, service tagsInteractionService) {
 	commons.WithUsername(c, func(username string) {
 		tags := service.GetUserTags(username)
@@ -46,7 +46,7 @@ func HandleUserTagsRetrieval(c *gin.Context, service tagsInteractionService) {
 	})
 }
 
-// Deals with adding new tags for the user
+// HandleUserTagsAddition deals with adding new tags for the user
 func HandleUserTagsAddition(c *gin.Context, service tagsInteractionService) {
 	commons.WithUsername(c, func(username string) {
 		handleTagAddRemove(
@@ -59,7 +59,7 @@ func HandleUserTagsAddition(c *gin.Context, service tagsInteractionService) {
 	})
 }
 
-// Deals with removing some tags from the user
+// HandleUserTagsRemoval deals with removing some tags from the user
 func HandleUserTagsRemoval(c *gin.Context, service tagsInteractionService) {
 	commons.WithUsername(c, func(username string) {
 		handleTagAddRemove(

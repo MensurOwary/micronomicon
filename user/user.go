@@ -16,7 +16,7 @@ var (
 	EmptyUser                  = Account{}
 )
 
-// Registers the user
+// Register registers the user
 func (s *Service) Register(user User) error {
 	password := user.Password
 	encrypted, err := s.encrypt.Encrypt(password)
@@ -29,7 +29,7 @@ func (s *Service) Register(user User) error {
 	return nil
 }
 
-// Logs the user in
+// Login logs the user in
 func (s *Service) Login(incoming User) (string, error) {
 	user := s.store.FindUser(incoming.Username)
 	if user != DoesNotExist {
@@ -40,19 +40,18 @@ func (s *Service) Login(incoming User) (string, error) {
 			}
 			log.Println(err)
 			return EmptyToken, ErrTokenCouldNotBeCreated
-		} else {
-			return EmptyToken, ErrIncorrectPassword
 		}
+		return EmptyToken, ErrIncorrectPassword
 	}
 	return EmptyToken, ErrNotFound
 }
 
-// Verifies the existence of the user by username
+// Verify verifies the existence of the user by username
 func (s *Service) Verify(username string) bool {
 	return s.store.FindUser(username) != DoesNotExist
 }
 
-// Fetches the user data
+// GetUser fetches the user data
 func (s *Service) GetUser(username string) (Account, error) {
 	user := s.store.FindUser(username)
 	if user != DoesNotExist {
@@ -70,7 +69,7 @@ func (s *Service) GetUser(username string) (Account, error) {
 	return EmptyUser, errors.New("user not found for username " + username)
 }
 
-// Fetches the tags of the user
+// GetUserTags fetches the tags of the user
 func (s *Service) GetUserTags(username string) []tag.Tag {
 	log.Printf("User[%s] tags have been requested\n", username)
 	var tagList []tag.Tag
@@ -83,19 +82,19 @@ func (s *Service) GetUserTags(username string) []tag.Tag {
 	return tagList
 }
 
-// Adds new tags for user
+// AddTagsForUser adds new tags for user
 func (s *Service) AddTagsForUser(username string, newTagIds []string) bool {
 	log.Printf("Add tags[%s] for user[%s]\n", newTagIds, username)
 	return s.tags.AddTagsForUser(username, newTagIds)
 }
 
-// Removes tags from user
+// RemoveTagsFromUser removes tags from user
 func (s *Service) RemoveTagsFromUser(username string, tagIdsToRemove []string) bool {
 	log.Printf("Remove tags[%s] for user[%s]\n", tagIdsToRemove, username)
 	return s.tags.RemoveTagsFromUser(username, tagIdsToRemove)
 }
 
-// Logs the user out
+// Logout logs the user out
 func (s *Service) Logout(token string) bool {
 	return s.jwt.DeleteJwt(token)
 }

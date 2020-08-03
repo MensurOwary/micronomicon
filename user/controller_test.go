@@ -1,10 +1,10 @@
 package user
 
 import (
-	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"io"
+	"micron/commons"
 	"micron/model"
 	"micron/tag"
 	"net/http"
@@ -25,7 +25,7 @@ func TestHandleUserByTokenRetrieval(t *testing.T) {
 		HandleUserByTokenRetrieval(c, service)
 
 		assert.Equal(t, http.StatusOK, rec.Code)
-		assert.Equal(t, toJson(Account{Username: "jane"}), rec.Body.String())
+		assert.Equal(t, commons.ToJSON(Account{Username: "jane"}), rec.Body.String())
 	})
 
 	t.Run("When user is not found for the token", func(t *testing.T) {
@@ -38,7 +38,7 @@ func TestHandleUserByTokenRetrieval(t *testing.T) {
 		HandleUserByTokenRetrieval(c, service)
 
 		assert.Equal(t, http.StatusNotFound, rec.Code)
-		assert.Equal(t, toJson(model.Response(ErrNotFound.Error())), rec.Body.String())
+		assert.Equal(t, commons.ToJSON(model.Response(ErrNotFound.Error())), rec.Body.String())
 	})
 }
 
@@ -53,7 +53,7 @@ func TestHandleUserTagsRetrieval(t *testing.T) {
 		HandleUserTagsRetrieval(c, service)
 
 		assert.Equal(t, http.StatusOK, rec.Code)
-		assert.Equal(t, toJson([]tag.Tag{
+		assert.Equal(t, commons.ToJSON([]tag.Tag{
 			{Name: "react"},
 			{Name: "ruby"},
 		}), rec.Body.String())
@@ -72,7 +72,7 @@ func TestHandleUserTagsAddition(t *testing.T) {
 		HandleUserTagsAddition(c, service)
 
 		assert.Equal(t, http.StatusOK, rec.Code)
-		assert.Equal(t, toJson(TagsAddedSuccessfully), rec.Body.String())
+		assert.Equal(t, commons.ToJSON(TagsAddedSuccessfully), rec.Body.String())
 	})
 
 	t.Run("Tags could not be added", func(t *testing.T) {
@@ -83,7 +83,7 @@ func TestHandleUserTagsAddition(t *testing.T) {
 		HandleUserTagsAddition(c, service)
 
 		assert.Equal(t, http.StatusBadRequest, rec.Code)
-		assert.Equal(t, toJson(NewTagsCouldNotBeAdded), rec.Body.String())
+		assert.Equal(t, commons.ToJSON(NewTagsCouldNotBeAdded), rec.Body.String())
 	})
 }
 
@@ -98,7 +98,7 @@ func TestHandleUserTagsRemoval(t *testing.T) {
 		HandleUserTagsRemoval(c, service)
 
 		assert.Equal(t, http.StatusOK, rec.Code)
-		assert.Equal(t, toJson(TagsRemovedSuccessfully), rec.Body.String())
+		assert.Equal(t, commons.ToJSON(TagsRemovedSuccessfully), rec.Body.String())
 	})
 
 	t.Run("Tags could not be removed", func(t *testing.T) {
@@ -109,7 +109,7 @@ func TestHandleUserTagsRemoval(t *testing.T) {
 		HandleUserTagsRemoval(c, service)
 
 		assert.Equal(t, http.StatusBadRequest, rec.Code)
-		assert.Equal(t, toJson(TagsCouldNotBeRemoved), rec.Body.String())
+		assert.Equal(t, commons.ToJSON(TagsCouldNotBeRemoved), rec.Body.String())
 	})
 
 }
@@ -163,12 +163,4 @@ func (m *mockTagsInteractionService) AddTagsForUser(_ string, _ []string) bool {
 
 func (m *mockTagsInteractionService) RemoveTagsFromUser(_ string, _ []string) bool {
 	return m.removeTagsFromUser
-}
-
-func toJson(obj interface{}) string {
-	marshal, err := json.Marshal(obj)
-	if err != nil {
-		panic("Could not serialize to json")
-	}
-	return string(marshal)
 }

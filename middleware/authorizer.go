@@ -19,7 +19,7 @@ type jwtService interface {
 
 var EmptyToken = ""
 
-// middleware that deals with bearer token authorizations
+// Authorizer is a middleware that deals with bearer token authorizations
 func Authorizer(userService userService, jwtService jwtService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		accessToken := extractToken(c)

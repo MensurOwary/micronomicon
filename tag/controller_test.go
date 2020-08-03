@@ -1,9 +1,9 @@
 package tag
 
 import (
-	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
+	"micron/commons"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -20,7 +20,7 @@ func TestHandleTagsRetrieval(t *testing.T) {
 	HandleTagsRetrieval(c, service)
 
 	assert.Equal(t, http.StatusOK, recorder.Code)
-	assert.Equal(t, toJson(Tags{
+	assert.Equal(t, commons.ToJSON(Tags{
 		Tags: []Tag{
 			{Name: "react"},
 			{Name: "ruby"},
@@ -39,12 +39,4 @@ func (m *mockService) GetAvailableTags() Tags {
 		},
 		Size: 2,
 	}
-}
-
-func toJson(obj interface{}) string {
-	marshal, err := json.Marshal(obj)
-	if err != nil {
-		panic("Could not serialize to json")
-	}
-	return string(marshal)
 }

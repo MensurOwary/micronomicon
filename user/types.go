@@ -6,7 +6,7 @@ import (
 	"micron/tag"
 )
 
-// Represents a user payload
+// User represents a user payload
 type User struct {
 	Username string `json:"username"`
 	Email    string `json:"email"`
@@ -14,7 +14,7 @@ type User struct {
 	Password string `json:"password"`
 }
 
-// Represents a domain user
+// Account represents a domain user
 type Account struct {
 	Username string   `json:"username"`
 	Name     string   `json:"name"`
@@ -22,14 +22,14 @@ type Account struct {
 	Tags     tag.Tags `json:"tags"`
 }
 
-// Represents a means that deals with Jwt related actions
+// JwtService represents a means that deals with Jwt related actions
 type JwtService interface {
 	SignedToken(username string) (string, error)
 	SaveJwt(jwt string) bool
 	DeleteJwt(jwt string) bool
 }
 
-// Represents a means that deals with Tags related actions
+// TagsService represents a means that deals with Tags related actions
 type TagsService interface {
 	AddTagsForUser(username string, newTagIds []string) bool
 	RemoveTagsFromUser(username string, removable []string) bool
@@ -37,7 +37,7 @@ type TagsService interface {
 	GetTagByID(name string) tag.Tag
 }
 
-// Represents the user service entity
+// Service represents the user service entity
 type Service struct {
 	store   Repository
 	tags    TagsService
@@ -45,7 +45,7 @@ type Service struct {
 	jwt     JwtService
 }
 
-// Configuration for the user service entity
+// ServiceConfig is the configuration for the user service entity
 type ServiceConfig struct {
 	Store   Repository
 	Tags    TagsService
@@ -61,7 +61,7 @@ type repository struct {
 	databaseAccess
 }
 
-// Creates a new instance of user repository
+// NewRepository creates a new instance of user repository
 func NewRepository(MongoClient *mongo.Client) Repository {
 	return &repository{
 		databaseAccess{
@@ -70,7 +70,7 @@ func NewRepository(MongoClient *mongo.Client) Repository {
 	}
 }
 
-// Creates a new instance of user service
+// NewService creates a new instance of user service
 func NewService(config ServiceConfig) *Service {
 	return &Service{
 		store:   config.Store,
@@ -80,7 +80,7 @@ func NewService(config ServiceConfig) *Service {
 	}
 }
 
-// Represents a means that deals with database related interactions
+// Repository represents a means that deals with database related interactions
 type Repository interface {
 	SaveUser(user User) bool
 	FindUser(username string) User

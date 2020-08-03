@@ -6,7 +6,7 @@ import (
 	"regexp"
 )
 
-// Represents a row in a CSV file
+// Row represents a row in a CSV file
 type Row struct {
 	Title string `csv:"title"`
 	Link  string `csv:"link"`
@@ -17,14 +17,17 @@ var database map[string][]Row
 
 type csvDatabase struct{}
 
+// Scraper represents a means to access the database of the scraped data
 type Scraper interface {
 	Database() map[string][]Row
 }
 
+// NewScraper initializes a new instance of the Scraper
 func NewScraper() Scraper {
 	return &csvDatabase{}
 }
 
+// Database returns the scraped database
 func (c *csvDatabase) Database() map[string][]Row {
 	if database != nil {
 		return database

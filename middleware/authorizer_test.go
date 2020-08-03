@@ -1,7 +1,6 @@
 package middleware
 
 import (
-	"encoding/json"
 	"errors"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
@@ -25,7 +24,7 @@ func TestAuthorizer(t *testing.T) {
 		Authorizer(userService, jwtService)(c)
 		// then
 		assert.Equal(t, http.StatusBadRequest, recorder.Code)
-		assert.Equal(t, toJson(model.Response("Authorization header is missing or empty")), recorder.Body.String())
+		assert.Equal(t, commons.ToJSON(model.Response("Authorization header is missing or empty")), recorder.Body.String())
 		checkUsernameKeyStatus(t, c, false)
 	})
 
@@ -42,7 +41,7 @@ func TestAuthorizer(t *testing.T) {
 		Authorizer(userService, jwtService)(c)
 		// then
 		assert.Equal(t, http.StatusBadRequest, recorder.Code)
-		assert.Equal(t, toJson(model.Response("parsing failed")), recorder.Body.String())
+		assert.Equal(t, commons.ToJSON(model.Response("parsing failed")), recorder.Body.String())
 		checkUsernameKeyStatus(t, c, false)
 	})
 
@@ -56,7 +55,7 @@ func TestAuthorizer(t *testing.T) {
 		Authorizer(userService, jwtService)(c)
 		// then
 		assert.Equal(t, http.StatusUnauthorized, recorder.Code)
-		assert.Equal(t, toJson(model.Response("Unauthorized")), recorder.Body.String())
+		assert.Equal(t, commons.ToJSON(model.Response("Unauthorized")), recorder.Body.String())
 		checkUsernameKeyStatus(t, c, false)
 	})
 
@@ -107,12 +106,4 @@ func (m *mockService) ParseJwt(_ string) (*commons.ParsedJwtResult, error) {
 	return &commons.ParsedJwtResult{
 		Username: "john",
 	}, m.parseErr
-}
-
-func toJson(obj interface{}) string {
-	marshal, err := json.Marshal(obj)
-	if err != nil {
-		panic("Could not serialize to json")
-	}
-	return string(marshal)
 }
