@@ -1,5 +1,7 @@
 # micronomicon
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/5a491d39cd6a4456954bd79dd883b7da)](https://www.codacy.com/manual/MensurOwary/micronomicon?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MensurOwary/micronomicon&amp;utm_campaign=Badge_Grade)
+
 The backend for the micro-learning app _**micronomicon**_. 
 
 Usage:
