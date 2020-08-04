@@ -75,6 +75,9 @@ func (m *mockService) GetARandomMicronForTag(tag tag.Tag) Micron {
 	}
 	return EmptyMicron
 }
-func (m *mockService) GetUserTags(_ string) []tag.Tag {
-	return m.tags
+func (m *mockService) GetUserTags(_ string) tag.Tags {
+	return tag.Tags{
+		Tags: m.tags,
+		Size: len(m.tags),
+	}
 }

@@ -20,7 +20,7 @@ type usersInteractionService interface {
 }
 
 type tagsInteractionService interface {
-	GetUserTags(username string) []tag.Tag
+	GetUserTags(username string) tag.Tags
 	AddTagsForUser(username string, newTagIds []string) bool
 	RemoveTagsFromUser(username string, tagIdsToRemove []string) bool
 }

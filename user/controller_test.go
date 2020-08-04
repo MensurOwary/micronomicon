@@ -52,9 +52,12 @@ func TestHandleUserTagsRetrieval(t *testing.T) {
 		HandleUserTagsRetrieval(c, service)
 
 		assert.Equal(t, http.StatusOK, rec.Code)
-		assert.Equal(t, commons.ToJSON([]tag.Tag{
-			{Name: "react"},
-			{Name: "ruby"},
+		assert.Equal(t, commons.ToJSON(tag.Tags{
+			Tags: []tag.Tag{
+				{Name: "react"},
+				{Name: "ruby"},
+			},
+			Size: 2,
 		}), rec.Body.String())
 	})
 
@@ -149,10 +152,13 @@ type mockTagsInteractionService struct {
 	addTagsForUser, removeTagsFromUser bool
 }
 
-func (m *mockTagsInteractionService) GetUserTags(_ string) []tag.Tag {
-	return []tag.Tag{
-		{Name: "react"},
-		{Name: "ruby"},
+func (m *mockTagsInteractionService) GetUserTags(_ string) tag.Tags {
+	return tag.Tags{
+		Tags: []tag.Tag{
+			{Name: "react"},
+			{Name: "ruby"},
+		},
+		Size: 2,
 	}
 }
 

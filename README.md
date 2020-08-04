@@ -145,17 +145,20 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTY1NzE2M
 *Response*
 
 ```json
-[
-    {
-        "name": "c"
-    },
-    {
-        "name": "react"
-    },
-    {
-        "name": "python"
-    }
-]
+{
+    "tags": [
+        {
+            "name": "c"
+        },
+        {
+            "name": "react"
+        },
+        {
+            "name": "python"
+        }
+    ],
+    "size": 3
+}
 ```
 
 </details>

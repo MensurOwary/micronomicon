@@ -60,26 +60,26 @@ func (s *Service) GetUser(username string) (Account, error) {
 			Username: user.Username,
 			Email:    user.Email,
 			Name:     user.Name,
-			Tags: tag.Tags{
-				Tags: tags,
-				Size: len(tags),
-			},
+			Tags:     tags,
 		}, nil
 	}
 	return EmptyUser, errors.New("user not found for username " + username)
 }
 
 // GetUserTags fetches the tags of the user
-func (s *Service) GetUserTags(username string) []tag.Tag {
+func (s *Service) GetUserTags(username string) tag.Tags {
 	log.Printf("User[%s] tags have been requested\n", username)
-	var tagList []tag.Tag
+	tagList := []tag.Tag{}
 	for _, id := range s.tags.GetUserTags(username) {
 		aTag := s.tags.GetTagByID(id)
 		if aTag != tag.EmptyTag {
 			tagList = append(tagList, aTag)
 		}
 	}
-	return tagList
+	return tag.Tags{
+		Tags: tagList,
+		Size: len(tagList),
+	}
 }
 
 // AddTagsForUser adds new tags for user

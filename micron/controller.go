@@ -13,7 +13,7 @@ type service interface {
 }
 
 type userService interface {
-	GetUserTags(username string) []tag.Tag
+	GetUserTags(username string) tag.Tags
 }
 
 // HandleMicronRetrieval handles the retrieval of a micron
@@ -30,9 +30,9 @@ func HandleMicronRetrieval(c *gin.Context, s service, user userService) {
 
 func getRandomMicron(username string, s service, user userService) Micron {
 	tags := user.GetUserTags(username)
-	if len(tags) > 0 {
-		chosen := rand.Intn(len(tags))
-		return s.GetARandomMicronForTag(tags[chosen])
+	if tags.Size > 0 {
+		chosen := rand.Intn(tags.Size)
+		return s.GetARandomMicronForTag(tags.Tags[chosen])
 	}
 	return EmptyMicron
 }
