@@ -11,6 +11,8 @@ services:
       - DATABASE_CONNECTION_USERNAME=root
       - DATABASE_CONNECTION_PASSWORD=root
       - JWT_SECRET=MlkMIlRWTcmkqCKKz9gyriGQM7
+    depends_on:
+      - database
   database:
     image: mongo
     container_name: 'micron_db'
