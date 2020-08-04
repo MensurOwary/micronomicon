@@ -97,6 +97,7 @@ func (j *JwtService) SaveJwt(jwt string) bool {
 	return j.withJwtDb(func(collection *mongo.Collection) interface{} {
 		insertOneResult, err := collection.InsertOne(context.Background(), bson.D{
 			{"jwt", jwt},
+			{"createdDate", time.Now()},
 		})
 		if err != nil {
 			log.Printf("Error while saving Jwt to database - %s", err.Error())

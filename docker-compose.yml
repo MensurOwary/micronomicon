@@ -1,4 +1,4 @@
-version: '3.0'
+version: '3.8'
 services:
   micron:
     build: .
@@ -15,11 +15,14 @@ services:
     depends_on:
       - database
   database:
-    image: mongo
+    image: mongo:latest
     container_name: 'micron_db'
     restart: on-failure
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: admin
     ports:
       - '27017-27019:27017-27019'
+    volumes:
+      - './mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro'
