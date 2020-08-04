@@ -18,7 +18,7 @@ import (
 
 func main() {
 	// does the scraping stuff
-	scraper.Start(false)
+	scraper.Start(commons.Config.ScrapingEnabled)
 
 	client, cancel := initDb()
 	defer (*cancel)()

@@ -15,3 +15,4 @@ services:
       - DATABASE_CONNECTION_USERNAME=root
       - DATABASE_CONNECTION_PASSWORD=root
       - JWT_SECRET=MlkMIlRWTcmkqCKKz9gyriGQM7
+      - SCRAPING_ENABLED=false

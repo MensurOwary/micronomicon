@@ -75,6 +75,14 @@ func GetEnv(key string) string {
 	return value
 }
 
+func GetEnvBool(key string) bool {
+	value := strings.ToLower(strings.TrimSpace(os.Getenv(key)))
+	if value == "" {
+		return false
+	}
+	return value == "true"
+}
+
 // ToJSON serializes the given object to a JSON string
 func ToJSON(obj interface{}) string {
 	marshal, err := json.Marshal(obj)
