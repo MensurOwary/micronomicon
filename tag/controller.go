@@ -2,6 +2,7 @@ package tag
 
 import (
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 type tagsService interface {
@@ -11,5 +12,5 @@ type tagsService interface {
 // HandleTagsRetrieval deals with the retrieval of tags
 func HandleTagsRetrieval(c *gin.Context, service tagsService) {
 	tagCollection := service.GetAvailableTags()
-	c.JSON(200, tagCollection)
+	c.JSON(http.StatusOK, tagCollection)
 }

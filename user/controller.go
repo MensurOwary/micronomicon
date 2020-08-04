@@ -3,17 +3,16 @@ package user
 import (
 	"github.com/gin-gonic/gin"
 	"micron/commons"
-	"micron/model"
 	"micron/tag"
 	"net/http"
 )
 
 // Responses to actions
 var (
-	TagsAddedSuccessfully   = model.Response("Successfully added the tags")
-	NewTagsCouldNotBeAdded  = model.Response("Could not add the new tag(s)")
-	TagsRemovedSuccessfully = model.Response("Successfully removed the tags")
-	TagsCouldNotBeRemoved   = model.Response("Could not remove the tag(s)")
+	TagsAddedSuccessfully   = commons.Response("Successfully added the tags")
+	NewTagsCouldNotBeAdded  = commons.Response("Could not add the new tag(s)")
+	TagsRemovedSuccessfully = commons.Response("Successfully removed the tags")
+	TagsCouldNotBeRemoved   = commons.Response("Could not remove the tag(s)")
 )
 
 type usersInteractionService interface {
@@ -31,7 +30,7 @@ func HandleUserByTokenRetrieval(c *gin.Context, service usersInteractionService)
 	commons.WithUsername(c, func(username string) {
 		retrievedUser, err := service.GetUser(username)
 		if err != nil {
-			c.JSON(http.StatusNotFound, model.Response(err.Error()))
+			c.JSON(http.StatusNotFound, commons.Response(err.Error()))
 		} else {
 			c.JSON(http.StatusOK, retrievedUser)
 		}

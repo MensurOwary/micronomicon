@@ -5,7 +5,6 @@ import (
 	"github.com/stretchr/testify/assert"
 	"io"
 	"micron/commons"
-	"micron/model"
 	"micron/tag"
 	"net/http"
 	"net/http/httptest"
@@ -38,7 +37,7 @@ func TestHandleUserByTokenRetrieval(t *testing.T) {
 		HandleUserByTokenRetrieval(c, service)
 
 		assert.Equal(t, http.StatusNotFound, rec.Code)
-		assert.Equal(t, commons.ToJSON(model.Response(ErrNotFound.Error())), rec.Body.String())
+		assert.Equal(t, commons.ToJSON(commons.Response(ErrNotFound.Error())), rec.Body.String())
 	})
 }
 

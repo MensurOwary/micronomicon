@@ -4,7 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"micron/commons"
-	"micron/model"
 	"micron/tag"
 	"net/http"
 	"net/http/httptest"
@@ -19,7 +18,7 @@ func TestHandleMicronRetrieval(t *testing.T) {
 		HandleMicronRetrieval(c, service, service)
 
 		assert.Equal(t, http.StatusNotFound, recorder.Code)
-		assert.Equal(t, commons.ToJSON(model.Response("Could not find a micron")), recorder.Body.String())
+		assert.Equal(t, commons.ToJSON(commons.Response("Could not find a micron")), recorder.Body.String())
 	})
 
 	t.Run("Successfully gets a micron", func(t *testing.T) {
@@ -46,7 +45,7 @@ func TestHandleMicronRetrieval(t *testing.T) {
 		HandleMicronRetrieval(c, service, service)
 
 		assert.Equal(t, http.StatusBadRequest, recorder.Code)
-		assert.Equal(t, commons.ToJSON(model.Response("username was not found")), recorder.Body.String())
+		assert.Equal(t, commons.ToJSON(commons.Response("username was not found")), recorder.Body.String())
 	})
 }
 

@@ -5,7 +5,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"log"
 	"micron/commons"
-	"micron/model"
 	"net/http"
 )
 
@@ -47,7 +46,7 @@ func userVerification(c *gin.Context, parsed *commons.ParsedJwtResult, userServi
 }
 
 func abort(c *gin.Context, status int, message string) {
-	c.JSON(status, model.Response(message))
+	c.JSON(status, commons.Response(message))
 	c.Abort()
 }
 

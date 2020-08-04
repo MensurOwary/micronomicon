@@ -1,4 +1,4 @@
-package model
+package commons
 
 // DefaultResponse is the default response template
 type DefaultResponse struct {

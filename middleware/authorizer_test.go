@@ -5,7 +5,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"micron/commons"
-	"micron/model"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -24,7 +23,7 @@ func TestAuthorizer(t *testing.T) {
 		Authorizer(userService, jwtService)(c)
 		// then
 		assert.Equal(t, http.StatusBadRequest, recorder.Code)
-		assert.Equal(t, commons.ToJSON(model.Response("Authorization header is missing or empty")), recorder.Body.String())
+		assert.Equal(t, commons.ToJSON(commons.Response("Authorization header is missing or empty")), recorder.Body.String())
 		checkUsernameKeyStatus(t, c, false)
 	})
 
@@ -41,7 +40,7 @@ func TestAuthorizer(t *testing.T) {
 		Authorizer(userService, jwtService)(c)
 		// then
 		assert.Equal(t, http.StatusBadRequest, recorder.Code)
-		assert.Equal(t, commons.ToJSON(model.Response("parsing failed")), recorder.Body.String())
+		assert.Equal(t, commons.ToJSON(commons.Response("parsing failed")), recorder.Body.String())
 		checkUsernameKeyStatus(t, c, false)
 	})
 
@@ -55,7 +54,7 @@ func TestAuthorizer(t *testing.T) {
 		Authorizer(userService, jwtService)(c)
 		// then
 		assert.Equal(t, http.StatusUnauthorized, recorder.Code)
-		assert.Equal(t, commons.ToJSON(model.Response("Unauthorized")), recorder.Body.String())
+		assert.Equal(t, commons.ToJSON(commons.Response("Unauthorized")), recorder.Body.String())
 		checkUsernameKeyStatus(t, c, false)
 	})
 

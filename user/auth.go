@@ -5,7 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"log"
 	"micron/commons"
-	"micron/model"
+	"net/http"
 	"strings"
 )
 
@@ -37,14 +37,14 @@ func HandleUserRegistration(c *gin.Context, service AuthService) {
 	err := createdUser.validateRegister()
 
 	if err != nil {
-		c.JSON(400, model.Response(err.Error()))
+		c.JSON(http.StatusBadRequest, commons.Response(err.Error()))
 		c.Abort()
 	}
 
 	if service.Register(createdUser) == ErrCouldNotEncryptPassword {
-		c.JSON(422, model.Response("Could not process the request"))
+		c.JSON(http.StatusUnprocessableEntity, commons.Response("Could not process the request"))
 	} else {
-		c.JSON(201, model.Response("Created the user"))
+		c.JSON(http.StatusCreated, commons.Response("Created the user"))
 	}
 }
 
@@ -75,15 +75,15 @@ func HandleUserAuthorization(c *gin.Context, service AuthService) {
 	err := createdUser.validateLogin()
 
 	if err != nil {
-		c.JSON(400, model.Response(err.Error()))
+		c.JSON(http.StatusBadRequest, commons.Response(err.Error()))
 		c.Abort()
 	}
 
 	token, err := service.Login(createdUser)
 	if err != nil {
-		c.JSON(401, model.Response(err.Error()))
+		c.JSON(http.StatusUnauthorized, commons.Response(err.Error()))
 	} else {
-		c.JSON(200, AuthResponse{
+		c.JSON(http.StatusOK, AuthResponse{
 			AccessToken: token,
 		})
 	}
@@ -106,5 +106,5 @@ func HandleUserLogout(c *gin.Context, service AuthService) {
 	if !service.Logout(token) {
 		log.Println("Could not delete token successfully")
 	}
-	c.JSON(200, model.Response("Successfully logged out"))
+	c.JSON(http.StatusOK, commons.Response("Successfully logged out"))
 }

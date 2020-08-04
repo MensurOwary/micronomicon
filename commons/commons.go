@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"micron/model"
 	"net/http"
 	"os"
 	"strings"
@@ -19,7 +18,7 @@ func WithUsername(c *gin.Context, callable callable) {
 	if ok {
 		callable(username)
 	} else {
-		c.JSON(http.StatusBadRequest, model.Response("username was not found"))
+		c.JSON(http.StatusBadRequest, Response("username was not found"))
 	}
 }
 
