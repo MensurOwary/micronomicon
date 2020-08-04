@@ -3,6 +3,7 @@ package commons
 import (
 	"github.com/stretchr/testify/assert"
 	"net/http"
+	"os"
 	"testing"
 )
 
@@ -108,4 +109,51 @@ func TestExtractToken(t *testing.T) {
 		})
 	}
 
+}
+
+func TestGetEnvBool(t *testing.T) {
+	key := "A_VERY_RANDOM_UNUSABLE_KEY_97643"
+
+	tt := []struct {
+		name, value     string
+		expected, unset bool
+	}{
+		{
+			name:     "When empty then false",
+			value:    "",
+			expected: false,
+		},
+		{
+			name:     "When true then true",
+			value:    "true",
+			expected: true,
+		},
+		{
+			name:     "When tRuE then true",
+			value:    "tRuE",
+			expected: true,
+		},
+		{
+			name:     "When unset then false",
+			value:    "UNSET",
+			expected: false,
+			unset:    true,
+		},
+	}
+
+	for _, tc := range tt {
+		t.Run(tc.name, func(t *testing.T) {
+			if tc.unset {
+				_ = os.Unsetenv(key)
+			} else {
+				_ = os.Setenv(key, tc.value)
+			}
+			actual := GetEnvBool(key)
+			assert.Equal(t, tc.expected, actual)
+		})
+	}
+
+	t.Cleanup(func() {
+		_ = os.Unsetenv(key)
+	})
 }
