@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 	"github.com/gin-gonic/gin"
+	log "github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"log"
 	"micron/commons"
 	"micron/micron"
 	"micron/middleware"
@@ -17,6 +17,8 @@ import (
 )
 
 func main() {
+	log.SetFormatter(&log.TextFormatter{})
+	log.SetReportCaller(false)
 	// does the scraping stuff
 	scraper.Start(commons.Config.ScrapingEnabled)
 
@@ -66,7 +68,7 @@ func initDb() (*mongo.Client, *context.CancelFunc) {
 	if err != nil {
 		panic("Could not connect to database")
 	} else {
-		log.Println("Successfully connected to database")
+		log.Info("Successfully connected to database")
 	}
 	return client, &cancel
 }

@@ -3,7 +3,7 @@ package middleware
 import (
 	"errors"
 	"github.com/gin-gonic/gin"
-	"log"
+	log "github.com/sirupsen/logrus"
 	"micron/commons"
 	"net/http"
 )
@@ -38,14 +38,16 @@ func Authorizer(userService userService, jwtService jwtService) gin.HandlerFunc 
 
 func userVerification(c *gin.Context, parsed *commons.ParsedJwtResult, userService userService) error {
 	if userService.Verify(parsed.Username) == false {
+		log.Warnf("User[%s] does not exist", parsed.Username)
 		return errors.New("unauthorized")
 	}
-	log.Printf("User [%s] successfully requested the resource\n", parsed.Username)
+	log.Infof("User[%s] successfully requested the resource : %s", parsed.Username, c.Request.RequestURI)
 	c.Set("username", parsed.Username)
 	return nil
 }
 
 func abort(c *gin.Context, status int, message string) {
+	log.Errorf("Operation resulted in failure...aborting. Cause : %s", message)
 	c.JSON(status, commons.Response(message))
 	c.Abort()
 }

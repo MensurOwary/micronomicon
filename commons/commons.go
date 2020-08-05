@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	log "github.com/sirupsen/logrus"
 	"net/http"
 	"os"
 	"strings"
@@ -70,7 +71,9 @@ func Difference(a []string, b []string) []string {
 func GetEnv(key string) string {
 	value := os.Getenv(key)
 	if value == "" {
-		panic(fmt.Sprintf("Missing the value for the environment variable [%s]", key))
+		errorMessage := fmt.Sprintf("Missing the value for the environment variable [%s]", key)
+		log.Error(errorMessage)
+		panic(errorMessage)
 	}
 	return value
 }
@@ -87,7 +90,9 @@ func GetEnvBool(key string) bool {
 func ToJSON(obj interface{}) string {
 	marshal, err := json.Marshal(obj)
 	if err != nil {
-		panic("Could not serialize to json")
+		errorMessage := "Could not serialize to json"
+		log.Error(errorMessage)
+		panic(errorMessage)
 	}
 	return string(marshal)
 }

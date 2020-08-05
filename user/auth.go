@@ -3,7 +3,7 @@ package user
 import (
 	"errors"
 	"github.com/gin-gonic/gin"
-	"log"
+	log "github.com/sirupsen/logrus"
 	"micron/commons"
 	"net/http"
 	"strings"
@@ -37,13 +37,16 @@ func HandleUserRegistration(c *gin.Context, service AuthService) {
 	err := createdUser.validateRegister()
 
 	if err != nil {
+		log.Errorf("User payload validation failed : %s", err.Error())
 		c.JSON(http.StatusBadRequest, commons.Response(err.Error()))
 		c.Abort()
 	}
 
 	if service.Register(createdUser) == ErrCouldNotEncryptPassword {
+		log.Error("Could not register the user : encrypting the password failed")
 		c.JSON(http.StatusUnprocessableEntity, commons.Response("Could not process the request"))
 	} else {
+		log.Info("Successfully registered the user")
 		c.JSON(http.StatusCreated, commons.Response("Created the user"))
 	}
 }
@@ -75,14 +78,17 @@ func HandleUserAuthorization(c *gin.Context, service AuthService) {
 	err := createdUser.validateLogin()
 
 	if err != nil {
+		log.Errorf("User payload validation failed : %s", err.Error())
 		c.JSON(http.StatusBadRequest, commons.Response(err.Error()))
 		c.Abort()
 	}
 
 	token, err := service.Login(createdUser)
 	if err != nil {
+		log.Errorf("User[%s] authorization failed : %s", createdUser.Username, err.Error())
 		c.JSON(http.StatusUnauthorized, commons.Response(err.Error()))
 	} else {
+		log.Infof("User[%s] successfully authorized", createdUser.Username)
 		c.JSON(http.StatusOK, AuthResponse{
 			AccessToken: token,
 		})
@@ -104,7 +110,7 @@ func (user *User) validateLogin() error {
 func HandleUserLogout(c *gin.Context, service AuthService) {
 	token := commons.ExtractToken(c.Request.Header)
 	if !service.Logout(token) {
-		log.Println("Could not delete token successfully")
+		log.Errorf("Could not delete token successfully")
 	}
 	c.JSON(http.StatusOK, commons.Response("Successfully logged out"))
 }

@@ -2,8 +2,8 @@ package scraper
 
 import (
 	"github.com/gocolly/colly"
+	log "github.com/sirupsen/logrus"
 	"io"
-	"log"
 	"os"
 	"strings"
 	"sync"
@@ -130,10 +130,10 @@ func merge() {
 		filename := fi.Name()
 		filePath := "./scraper/dataset/" + filename
 
-		log.Printf("Handling %s started", filename)
+		log.Infof("Handling %s started", filename)
 
 		file, _ := os.Open(filePath)
 		_, _ = io.Copy(create, file)
-		log.Printf("Handling %s finished", filename)
+		log.Infof("Handling %s finished", filename)
 	}
 }

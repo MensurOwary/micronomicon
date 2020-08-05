@@ -2,7 +2,7 @@ package user
 
 import (
 	"errors"
-	"log"
+	log "github.com/sirupsen/logrus"
 	"micron/tag"
 )
 
@@ -21,7 +21,7 @@ func (s *Service) Register(user User) error {
 	password := user.Password
 	encrypted, err := s.encrypt.Encrypt(password)
 	if err != nil {
-		log.Println(err)
+		log.Errorf("Password encryption failed: %s", err)
 		return ErrCouldNotEncryptPassword
 	}
 	user.Password = encrypted
@@ -68,7 +68,7 @@ func (s *Service) GetUser(username string) (Account, error) {
 
 // GetUserTags fetches the tags of the user
 func (s *Service) GetUserTags(username string) tag.Tags {
-	log.Printf("User[%s] tags have been requested\n", username)
+	log.Infof("User[%s] tags have been requested", username)
 	tagList := []tag.Tag{}
 	for _, id := range s.tags.GetUserTags(username) {
 		aTag := s.tags.GetTagByID(id)
@@ -84,13 +84,13 @@ func (s *Service) GetUserTags(username string) tag.Tags {
 
 // AddTagsForUser adds new tags for user
 func (s *Service) AddTagsForUser(username string, newTagIds []string) bool {
-	log.Printf("Add tags[%s] for user[%s]\n", newTagIds, username)
+	log.Infof("Add tags[%s] for user[%s]", newTagIds, username)
 	return s.tags.AddTagsForUser(username, newTagIds)
 }
 
 // RemoveTagsFromUser removes tags from user
 func (s *Service) RemoveTagsFromUser(username string, tagIdsToRemove []string) bool {
-	log.Printf("Remove tags[%s] for user[%s]\n", tagIdsToRemove, username)
+	log.Infof("Remove tags[%s] for user[%s]", tagIdsToRemove, username)
 	return s.tags.RemoveTagsFromUser(username, tagIdsToRemove)
 }
 

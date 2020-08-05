@@ -2,6 +2,7 @@ package micron
 
 import (
 	"github.com/gin-gonic/gin"
+	log "github.com/sirupsen/logrus"
 	"math/rand"
 	"micron/commons"
 	"micron/tag"
@@ -21,6 +22,7 @@ func HandleMicronRetrieval(c *gin.Context, s service, user userService) {
 	commons.WithUsername(c, func(username string) {
 		micron := getRandomMicron(username, s, user)
 		if micron == EmptyMicron {
+			log.Warnf("Micron could not be found for user[%s]", username)
 			c.JSON(http.StatusNotFound, commons.Response("Could not find a micron"))
 		} else {
 			c.JSON(http.StatusOK, micron)

@@ -2,10 +2,10 @@ package tag
 
 import (
 	"context"
+	log "github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"log"
 	"micron/commons"
 )
 
@@ -39,9 +39,9 @@ func (t *TagsService) doUpdateTagsField(collection *mongo.Collection, username s
 		(&options.UpdateOptions{}).SetUpsert(true),
 	)
 	if err != nil {
-		log.Printf("Error occurred during updating of %s - %s\n", username, err)
+		log.Errorf("Error occurred during updating of %s - %s", username, err)
 	} else {
-		log.Printf("Update successful - Result = %+v\n", updateResult)
+		log.Infof("Updating tags of user[%s] was successful - Result = %+v", username, updateResult)
 	}
 	return err == nil
 }
@@ -60,8 +60,8 @@ func (t *TagsService) GetUserTags(username string) []string {
 		}
 		err := singleResult.Decode(&tags)
 
-		if err != nil && tags.Tags != nil {
-			log.Printf("Error occurred while decoding the response - %s", err)
+		if err != nil && tags.Tags == nil {
+			log.Errorf("Error occurred while decoding the user tags - %s", err)
 		}
 		return tags.Tags
 	}).([]string)

@@ -2,8 +2,8 @@ package commons
 
 import (
 	"errors"
+	log "github.com/sirupsen/logrus"
 	"golang.org/x/crypto/bcrypt"
-	"log"
 )
 
 type encryptService struct{}
@@ -29,7 +29,7 @@ var (
 func (e *encryptService) Encrypt(input string) (string, error) {
 	hashedBytes, err := bcrypt.GenerateFromPassword([]byte(input), Config.EncryptionCost)
 	if err != nil {
-		log.Printf("Error occurred while hashing the input (%s): %s", input, err)
+		log.Errorf("Error occurred while hashing the input (%s): %s", input, err)
 		return EmptyInput, ErrCouldNotBeHashed
 	}
 	return string(hashedBytes), nil

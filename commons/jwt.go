@@ -4,9 +4,9 @@ import (
 	"context"
 	"errors"
 	"github.com/dgrijalva/jwt-go"
+	log "github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
-	"log"
 	"time"
 )
 
@@ -100,9 +100,9 @@ func (j *JwtService) SaveJwt(jwt string) bool {
 			{"createdDate", time.Now()},
 		})
 		if err != nil {
-			log.Printf("Error while saving Jwt to database - %s", err.Error())
+			log.Errorf("Error while saving Jwt to database - %s", err.Error())
 		} else {
-			log.Printf("Jwt saved to database - %s", insertOneResult)
+			log.Infof("Jwt saved to database - %s", insertOneResult)
 		}
 		return err == nil
 	}).(bool)
@@ -128,8 +128,11 @@ func (j *JwtService) DeleteJwt(jwt string) bool {
 		})
 
 		if err != nil {
-			log.Printf("Error while deleting a Jwt token - " + err.Error())
+			log.Errorf("Error while deleting a Jwt token - " + err.Error())
+		} else {
+			log.Infof("Successfully deleted token [%s]", jwt)
 		}
+
 		return err == nil
 	}).(bool)
 }
