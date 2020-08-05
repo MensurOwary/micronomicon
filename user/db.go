@@ -2,9 +2,9 @@ package user
 
 import (
 	"context"
+	log "github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
-	"log"
 )
 
 // SaveUser saves the user to database
@@ -20,9 +20,9 @@ func (r *repository) SaveUser(user User) bool {
 			},
 		)
 		if err != nil {
-			log.Printf("Error occurred during insertion of %s - %s", user, err)
+			log.Errorf("Saving user failed [%s] : %s", user, err)
 		} else {
-			log.Printf("Insertion successful - InsertionId = %s", result.InsertedID)
+			log.Infof("Saving user successful : InsertionId : %s", result.InsertedID)
 		}
 		return err == nil
 	}).(bool)
@@ -41,7 +41,7 @@ func (r *repository) FindUser(username string) User {
 		user := User{}
 		err := cursor.Decode(&user)
 		if err != nil {
-			log.Printf("Error occurred during retrieval of %s - %s", username, err)
+			log.Errorf("Unmarshalling the user object from response failed [%s] : %s", username, err)
 			return DoesNotExist
 		}
 		return user

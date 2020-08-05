@@ -2,6 +2,7 @@ package user
 
 import (
 	"github.com/gin-gonic/gin"
+	log "github.com/sirupsen/logrus"
 	"micron/commons"
 	"micron/tag"
 	"net/http"
@@ -30,8 +31,10 @@ func HandleUserByTokenRetrieval(c *gin.Context, service usersInteractionService)
 	commons.WithUsername(c, func(username string) {
 		retrievedUser, err := service.GetUser(username)
 		if err != nil {
+			log.Errorf("Could not retrieve the user : %s", err.Error())
 			c.JSON(http.StatusNotFound, commons.Response(err.Error()))
 		} else {
+			log.Infof("Successfully retrieved the user data for [%s]", username)
 			c.JSON(http.StatusOK, retrievedUser)
 		}
 	})
@@ -78,8 +81,10 @@ func handleTagAddRemove(c *gin.Context, action addOrRemoveTagsAction, successObj
 	_ = c.BindJSON(body)
 	tagIds, ok := (*body)["ids"]
 	if ok && action(tagIds) {
+		log.Info("Tag adding/removing succeeded")
 		c.JSON(http.StatusOK, successObj)
 	} else {
+		log.Error("Tag adding/removing failed")
 		c.JSON(http.StatusBadRequest, failObj)
 	}
 }
